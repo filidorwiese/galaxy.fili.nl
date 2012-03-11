@@ -1,0 +1,57 @@
+@media screen and (max-width: 899px) {
+	html, body {
+		font-size:100%;
+		overflow:visible;
+		background-color:#FFF;
+		min-width:0 !important;
+	}
+	
+	section#cosmos, header #unfold, div#speech {
+		display:none !important;
+	}
+	
+	section#content {
+		left:0;
+		margin-left:0;
+		width:100% !important;
+		min-height:1200px !important;
+	}
+	
+	#awwwards {
+		display:none;
+	}
+}
+
+
+@media screen and (max-width: 620px) {
+	header hgroup {
+		width:100%;
+	}
+	
+	header ul#personal-information {
+		float:left !important;
+		margin-top:20px;
+	}
+	
+	article {
+		top:100px !important;
+		clear:both;
+	}
+}
+
+
+@media screen and (max-width: 360px) {
+	header, article {
+		padding-left:20px;
+		padding-right:20px;
+		width:280px;
+		overflow-x:hidden;
+	}
+	
+	header ul#personal-information li {
+		min-width:120px;
+	}
+}
+
+@media screen and (min-width: 900px) {
+}

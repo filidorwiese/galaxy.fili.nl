@@ -1,0 +1,508 @@
+@font-face {
+    font-family: 'AntonRegular';
+    src: url('font/anton-webfont.eot');
+    src: url('font/anton-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/anton-webfont.woff') format('woff'),
+         url('font/anton-webfont.ttf') format('truetype'),
+         url('font/anton-webfont.svg#AntonRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CopseRegular';
+    src: url('font/copse-regular-webfont.eot');
+    src: url('font/copse-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/copse-regular-webfont.woff') format('woff'),
+         url('font/copse-regular-webfont.ttf') format('truetype'),
+         url('font/copse-regular-webfont.svg#CopseRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'CopseRegular', serif;
+    font-size: 100%;
+    color:#818690;
+    background-color:#000;
+	height:100%;
+	min-width:860px;
+	overflow:hidden;
+}
+
+a {
+	color:#2d6cb3;
+    text-decoration:none;
+    outline:0;
+}
+
+p {
+    margin:0 0 10px 0;
+}
+
+h1 {
+	font-family:'AntonRegular', sans-serif;
+    font-weight:normal;
+    font-size:300%;
+    margin:0 0 3px 0;
+    padding:0;
+    text-transform:uppercase;
+    text-shadow:0 -1px -1px #2B5E98;
+}
+
+h1:hover {
+    text-shadow:0 -1px -1px #000;
+}
+
+h2, h3 {
+    font-size:100%;
+    margin:0;
+    font-weight:normal;
+}
+
+h3 {
+	text-transform:uppercase;
+	margin-bottom:10px;
+}
+
+ul {
+	padding:0;
+	margin:0;
+}
+
+li {
+	padding:0;
+    margin:0;
+}
+
+::selection,
+::-moz-selection,
+::-webkit-selection {
+	background:#eaeaea;
+	color:#2d6cb3;
+}
+
+div#overlay {
+	position:relative;
+	top:0;
+	left:0;
+	z-index:100;
+	min-height:100px;
+	background-color:#FFF;
+	overflow:visible !important;
+}
+
+div#speech {
+	position:absolute;
+	bottom:-21px;
+	left:50%;
+	margin-left:-18px;
+	width:36px;
+	height:21px;
+	background-image:url(/images/speech.png);
+	background-position:bottom center;
+	background-repeat:no-repeat;
+}
+
+section#content {
+	position:relative;
+	left:50%;
+	margin-left:-470px;
+	width:940px;
+	height:100%;
+	overflow:hidden;
+}
+
+header {
+	padding:20px 40px 38px 40px;
+	color:#a5b2bd;
+	font-size:80%;
+}
+
+header a:active,
+header a:hover {
+	color:#2c3339 !important;
+	text-decoration:none;
+}
+
+header hgroup {
+	float:left;
+	width:210px;
+	margin-top:-3px;
+}
+
+header ul#personal-information {
+	float:right;
+	width:320px;
+	padding:0;
+	margin:0;
+}
+
+header ul#personal-information li {
+	float:left;
+	width:160px;
+	padding:0;
+	margin:0 0 6px 0;
+}
+
+header ul#personal-information li a {
+	color:#a5b2bd;
+	text-decoration:underline;
+}
+
+header ul#personal-information li a#google-badge {
+	/*visibility:hidden;*/
+	padding-left:15px;
+	background-repeat:no-repeat;
+	background-position:center left;
+}
+
+header ul#personal-information li a#google-badge.is-online {
+	background-image:url(/images/online.png);
+}
+
+header ul#personal-information li a#google-badge.is-idle {
+	background-image:url(/images/idle.png);
+}
+
+header ul#personal-information li a#google-badge.is-busy {
+	background-image:url(/images/busy.png);
+}
+
+header ul#personal-information li #google-badge.is-offline {
+	background-image:url(/images/offline.png);
+	text-decoration:line-through;
+}
+
+header #unfold {
+	position:absolute;
+	left:50%;
+	margin-left:-20px;
+}
+
+header #unfold a {
+	display:block;
+	width:40px;
+	height:40px;
+	background-image:url(/images/unfold-hover.png);
+	background-position:bottom left;
+}
+
+header #unfold a:hover {
+	background-position:bottom right
+}
+
+div#overlay.is-open #unfold a {
+	background-position:top left;
+}
+
+div#overlay.is-open #unfold a:hover {
+	background-position:top right;
+}
+
+article {
+	display:none;
+	position:absolute;
+	top:50px;
+	left:0;
+	padding:20px 40px 38px 40px;
+	margin-top:50px;
+	color:#757c87;
+	font-size:110%;
+	line-height:145%;
+	text-align:justify;
+	text-justify:inter-word;
+	background-color:#FFF;
+	height:100%;
+}
+
+article#page-over-mij {
+	display:block !important;
+}
+
+article a {
+	font-family:'AntonRegular', sans-serif;
+    text-transform:uppercase;
+    font-size:120%;
+    padding:0 3px 0 3px;
+}
+
+article a:active,
+article a:hover {
+	color:#2d6cb3;
+	background-color:#eaeaea;
+}
+
+article #social-media {
+	float:left;
+	margin-top:10px;
+}
+
+article #social-media iframe {
+	float:left;
+}
+
+article #social-media .twitter-share-button {
+	margin-right:8px;
+}
+
+div#theme-selector {
+	position:absolute;
+	z-index:95;
+	bottom:40px;
+	left:40px;
+}
+
+div#theme-selector ul {
+	position:relative;
+	z-index:110;
+	width:220px;
+	height:12px;
+	margin-bottom:18px;
+}
+
+div#theme-selector a {
+	float:left;
+	min-width:5%;
+	height:5px;
+	margin-top:7px;
+	box-shadow: 0 0 25px #3ba5eb;
+    -webkit-box-shadow: 0 0 25px #3ba5eb;
+    -moz-box-shadow: 0 0 25px #3ba5eb;
+    cursor:pointer;
+}
+
+div#theme-selector a:hover,
+div#theme-selector a.selected {
+	margin-top:0;
+	height:12px;
+}
+
+div#theme-selector a.theme-nacht {
+	background-color:#85a6a6;
+	width:33%;
+}
+
+div#theme-selector a.theme-ontbijt {
+	background-color:#FFFFFF;
+	width:5%;
+}
+
+div#theme-selector a.theme-ochtend {
+	background-color:#ff6f00;
+	width:10%;
+}
+
+div#theme-selector a.theme-lunch {
+	background-color:#fff200;
+	width:5%;
+}
+
+div#theme-selector a.theme-middag {
+	background-color:#00FF00;
+	width:20%;
+}
+
+div#theme-selector a.theme-japans {
+	background-color:#db6bdb;
+	width:6%;
+}
+
+div#theme-selector a.theme-lezen {
+	background-color:#ff00cc;
+	width:10%;
+}
+
+div#theme-selector a.theme-arcade {
+	background-color:#00ffff;
+	width:8%;
+}
+
+div#theme-selector time {
+	clear:both;
+	font-family:'AntonRegular';
+	font-weight:normal;
+	font-size:120%;
+	color:#FFF;
+	text-shadow: 0 0 25px #3ba5eb;
+}
+
+div#theme-selector time span {
+	display:inline-block;
+	width:6px;
+	text-align:center;
+}
+
+div#designer-credit {
+	position:absolute;
+	z-index:95;
+	bottom:40px;
+	right:40px;
+}
+
+div#designer-credit a {
+	display:block;
+	width:44px;
+	height:44px;
+	text-indent:-10000px;
+	background-image:url(/images/avth.png);
+}
+
+section#cosmos {
+	display:none;
+	position:relative;
+	height:100%;
+	min-height:620px;
+	overflow:hidden;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
+}
+
+div#galaxy {
+	position:absolute;
+	z-index:20;
+	top:-50px;
+	left:-50px;
+	width:110%;
+	height:110%;
+	background-image:url(/images/stars.png);
+	background-repeat:repeat;
+	background-position:0 0;
+}
+
+div#nebula {
+	position:absolute;
+	z-index:10;
+	width:110%;
+	height:110%;
+	background-image:url(/images/nebula-tile.png);
+}
+
+div#nebula div,
+div#nebula canvas {
+	position:absolute;
+	z-index:11;
+	top:48%;
+	left:50%;
+	width:1292px;
+	height:752px;
+	margin:-376px 0 0 -646px;
+}
+
+div#nebula div {
+	background-image:url(/images/nebula.png);
+	background-position:center center;
+	background-repeat:no-repeat;
+	z-index:14;
+}
+
+div#stars {
+	position:absolute;
+	z-index:25;
+	width:1298px;
+	height:885px;
+}
+
+div.star {
+	position:absolute;
+	width:17px;
+	height:17px;
+	background-image:url(/images/star-medium.png);
+}
+
+div.star.near {
+	width:26px;
+	height:26px;
+	background-image:url(/images/star-near.png);
+}
+
+div.star.distant {
+	width:12px;
+	height:13px;
+	background-image:url(/images/star-distant.png);
+}
+
+div#planet {
+	position:absolute;
+	z-index:30;
+	width:460px;
+	height:489px;
+	/*margin:-45px 0 0 -35px;*/
+	margin:0;
+	background-image:url(/images/planet.png);
+	background-repeat:no-repeat;
+	background-position:bottom center;
+}
+
+div#space-dust {
+	position:absolute;
+	z-index:40;
+	width:100%;
+	height:100%;
+	background-image:url(/images/space-dust.jpg);
+	background-repeat:repeat;
+	background-position:top left;
+	opacity:.1;
+}
+
+div#spriteEyes2,
+div#spriteEyes1 {
+	opacity:.3;
+}
+
+div#spriteExtra {
+	z-index:31;
+}
+
+div#spriteSignal {
+	opacity:.6;
+}
+
+div#color-one {
+	border:1px solid #ccc;
+	width:25px;
+	height:25px;
+	position:absolute;
+	bottom:40px;
+	right:140px;
+	z-index:200;
+	font-size:300%;
+}
+
+div#color-two {
+	border:1px solid #ccc;
+	width:25px;
+	height:25px;
+	position:absolute;
+	bottom:40px;
+	right:100px;
+	z-index:200;
+	font-size:300%
+}
+
+#awwwards {
+	position:absolute;
+	top:48%;
+	right:0px;
+	z-index:555;
+}
+
+#awwwards a {
+	width:69px;
+	height:105px;
+	text-indent:-8000px;
+	display:block;
+	background:url(/images/award_day_white.png) no-repeat;
+}
+
+#debug {
+	position:absolute;
+	top:300px;
+	left:0;
+	z-index:1000;
+	border:1px solid red;
+	width:250px;
+	height:50px;
+}

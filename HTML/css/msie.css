@@ -1,0 +1,37 @@
+a:active, a:focus {
+   outline:  none;
+   ie-dummy: expression(this.hideFocus=true);
+}
+
+div#theme-selector ul {
+	filter:Alpha(opacity=40);
+}
+
+div#theme-selector ul:hover {
+	filter:Alpha(opacity=100);
+}
+
+div#designer-credit a {
+	filter:Alpha(opacity=30);
+}
+
+div#designer-credit a:hover {
+	filter:Alpha(opacity=100);
+}
+
+div#space-dust {
+	filter:Alpha(opacity=20);
+}
+
+div#spriteEyes2,
+div#spriteEyes1 {
+	filter:Alpha(opacity=60);
+}
+
+div#space-debris {
+	display:none;
+}
+
+div#theme-selector li {
+	display:inline;
+}

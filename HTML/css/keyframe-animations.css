@@ -1,0 +1,145 @@
+div#theme-selector ul {
+	opacity:.4;
+}
+
+div#theme-selector ul:hover {
+	opacity:1;
+	-webkit-transition: opacity 350ms ease-in 0;
+    -moz-transition: opacity 350ms ease-in 0;
+    -o-transition: opacity 350ms ease-in 0;
+    transition: opacity 350ms ease-in 0;
+}
+
+div#designer-credit a {
+	opacity:.3;
+}
+
+div#designer-credit a:hover {
+	opacity:1;
+	-webkit-transition: opacity 350ms ease-in 0;
+    -moz-transition: opacity 350ms ease-in 0;
+    -o-transition: opacity 350ms ease-in 0;
+    transition: opacity 350ms ease-in 0;
+}
+
+div#space-debris div {
+	position:absolute;
+	z-index:35;
+	transform: translate(-1000px, -1000px);
+	-webkit-transform: translate(-1000px, -1000px);
+	-moz-transform: translate(-1000px, -1000px);
+}
+
+
+/* SPACE DEBRIS */
+@keyframes space-debris-one {
+	from {
+		transform: translate(600px, -100px);
+	}
+	
+	to {
+		transform: translate(-100px, 800px);
+	}
+}
+
+@-webkit-keyframes space-debris-one {
+	from {
+		-webkit-transform: translate(600px, -100px);
+	}
+	
+	to {
+		-webkit-transform: translate(-100px, 800px);
+	}
+}
+
+@-moz-keyframes space-debris-one {
+	from {
+		-moz-transform: translate(600px, -100px);
+	}
+	
+	to {
+		-moz-transform: translate(-100px, 800px);
+	}
+}
+
+
+div#space-debris div.one {
+	animation:space-debris-one 40s linear 5s infinite normal;
+	-webkit-animation:space-debris-one 40s linear 5s infinite normal;
+	-moz-animation:space-debris-one 40s linear 5s infinite normal;
+	opacity:.3;
+}
+
+@keyframes space-debris-two {
+	from {
+		transform: translate(800px, -100px);
+	}
+	
+	to {
+		transform: translate(100px, 1000px);
+	}
+}
+
+@-webkit-keyframes space-debris-two {
+	from {
+		-webkit-transform: translate(800px, -100px);
+	}
+	
+	to {
+		-webkit-transform: translate(100px, 1000px);
+	}
+}
+
+@-moz-keyframes space-debris-two {
+	from {
+		-moz-transform: translate(800px, -100px);
+	}
+	
+	to {
+		-moz-transform: translate(100px, 1000px);
+	}
+}
+
+div#space-debris div.two {
+	animation:space-debris-two 50s linear 15s infinite normal;
+	-webkit-animation:space-debris-two 50s linear 15s infinite normal;
+	-moz-animation:space-debris-two 50s linear 15s infinite normal;
+	opacity:.3;
+}
+
+@keyframes space-debris-three {
+	from {
+		transform: translate(550px, 1200px);
+	}
+	
+	to {
+		transform: translate(1250px, -100px);
+	}
+}
+
+@-webkit-keyframes space-debris-three {
+	from {
+		-webkit-transform: translate(550px, 1200px);
+	}
+	
+	to {
+		-webkit-transform: translate(1250px, -100px);
+	}
+}
+
+@-moz-keyframes space-debris-three {
+	from {
+		-moz-transform: translate(550px, 1200px);
+	}
+	
+	to {
+		-moz-transform: translate(1250px, -100px);
+	}
+}
+
+div#space-debris div.three {
+	animation:space-debris-three 60s linear 5s infinite normal;
+	-webkit-animation:space-debris-three 60s linear 5s infinite normal;
+	-moz-animation:space-debris-three 60s linear 5s infinite normal;
+	opacity:.3;
+}
