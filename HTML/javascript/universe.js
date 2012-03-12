@@ -11,13 +11,11 @@ var universe = {
 		transformSupport: false,
 		useTransforms: true,
 		useTranslate3d: false,
-		parralaxX: 100,
-		parralaxY: 100,
 		stopwatch: [],
 		ios: (navigator.userAgent.indexOf('iPhone')!=-1)||(navigator.userAgent.indexOf('iPod')!=-1)||(navigator.userAgent.indexOf('iPad')!=-1),
 		iphone: (navigator.userAgent.indexOf('iPhone')!=-1)||(navigator.userAgent.indexOf('iPod')!=-1),
 		ipad: (navigator.userAgent.indexOf('iPad')!=-1),
-		android: (navigator.userAgent.indexOf('Android')!=-1),
+		android: (navigator.userAgent.indexOf('Android')!=-1)
 	},
 	
 	context: {},
@@ -33,7 +31,7 @@ var universe = {
 			if (universe.constant.transformSupport) { universe.log('Detected CSS3 transformation support'); }
 			if (universe.constant.ipad) { universe.constant.useTranslate3d = true; }
 		}
-	
+		
 		var _cosmos = '<section id="cosmos"><div id="space-dust"></div><div id="galaxy"></div>' +
 					  '<div id="nebula"><canvas></canvas><div></div></div><div id="stars"></div>' +
 					  '<div id="planet"></div><div id="space-debris"></div></section>';
@@ -117,10 +115,10 @@ var universe = {
 		
 		universe.log('Universe: parallax');
 		
-		var	offsetXprev = offsetYprev = 0;
-		var pageXprev = (universe.constant.viewportWidth / 2);
-		var pageYprev = (universe.constant.viewportHeight / 2); 
 		var throttle = 0;
+		var	offsetXprev = offsetYprev = 0;
+		var Xprev = Yprev = 50;
+		var maxParallaxX = maxParallaxY = 110;
 		
 		var resize = function(event) {
 			universe.constant.viewportWidth = $(window).width();
@@ -139,77 +137,34 @@ var universe = {
 			update();
 		};
 		
-		var update = function(x, y) {
-			if (x == undefined || y == undefined) { x = pageXprev; y = pageYprev; offsetXprev = offsetYprev = 0;}
-			var offsetX = parseInt((x / (universe.constant.viewportWidth / universe.constant.parralaxX)) - universe.constant.parralaxX, 10);
-			var offsetY = parseInt((y / (universe.constant.viewportHeight / universe.constant.parralaxY)) - universe.constant.parralaxY, 10);
-			if (offsetX == offsetXprev && offsetY == offsetYprev) { return; }
+		var update = function(xAxis, yAxis) {
+			if (xAxis == undefined || yAxis == undefined) { xAxis = Xprev; yAxis = Yprev; offsetXprev = offsetYprev = 0;}
+			var offsetX = (maxParallaxX / 100) * xAxis * -1;
+			var offsetY = (maxParallaxY / 100) * yAxis * -1;
+			if (offsetX == offsetXprev && offsetY == offsetYprev) { return false; }
 			
 			offsetXprev = offsetX;
 			offsetYprev = offsetY;
-			pageXprev = x;
-			pageYprev = y;
-			/*
-			// parallax old
+			Xprev = xAxis;
+			Yprev = yAxis;
+			
+			// debug
+			universe.debug('xAxis: ' + xAxis + '<br />yAxis: ' + yAxis);
+			
+			// parallax effect
 			universe.transform({
-				top: (galaxyTop - (offsetY / 5)) + 'px',
-				left: (galaxyLeft - (offsetX / 5)) + 'px'
+				top: (galaxyTop - (offsetY / 4)) + 'px',
+				left: (galaxyLeft - (offsetX / 4)) + 'px'
 			}, universe.context.galaxy);
 			
 			universe.transform({
-				top: (nebulaTop - (offsetY / 5)) + 'px',
-				left: (nebulaLeft - (offsetX / 5)) + 'px'
+				top: (nebulaTop - (offsetY / 4)) + 'px',
+				left: (nebulaLeft - (offsetX / 4)) + 'px'
 			}, universe.context.nebula);
 			
 			universe.transform({
 				top: (starsTop - (offsetY / 3)) + 'px',
 				left: (starsLeft - (offsetX / 3)) + 'px'
-			}, universe.context.stars);
-			
-			universe.transform({
-				top: (planetTop - (offsetY)) + 'px',
-				left: (planetLeft - (offsetX)) + 'px',
-				scale: universe.context.planet.data('scale')
-			}, universe.context.planet);*/
-			
-			
-			// parallax inversed
-			/*universe.transform({
-				top: (galaxyTop - (offsetY / 2)) + 'px',
-				left: (galaxyLeft - (offsetX / 2)) + 'px'
-			}, universe.context.galaxy);
-			
-			universe.transform({
-				top: (nebulaTop - (offsetY / 2)) + 'px',
-				left: (nebulaLeft - (offsetX / 2)) + 'px'
-			}, universe.context.nebula);
-			
-			universe.transform({
-				top: (starsTop - (offsetY / 3)) + 'px',
-				left: (starsLeft - (offsetX / 3)) + 'px'
-			}, universe.context.stars);
-			
-			universe.transform({
-				top: (planetTop - (offsetY / 3)) + 'px',
-				left: (planetLeft - (offsetX / 3)) + 'px',
-				scale: universe.context.planet.data('scale')
-			}, universe.context.planet);*/
-			
-			
-			// parallax new
-			universe.transform({
-				top: (galaxyTop - (offsetY / 3)) + 'px',
-				left: (galaxyLeft - (offsetX / 3)) + 'px'
-			}, universe.context.galaxy);
-			
-			universe.transform({
-				top: (nebulaTop - (offsetY / 3)) + 'px',
-				left: (nebulaLeft - (offsetX / 3)) + 'px'
-			}, universe.context.nebula);
-			
-			universe.transform({
-				top: (starsTop - (offsetY / 2)) + 'px',
-				left: (starsLeft - (offsetX / 2)) + 'px'
 			}, universe.context.stars);
 			
 			universe.transform({
@@ -217,7 +172,6 @@ var universe = {
 				left: (planetLeft - (offsetX / 2)) + 'px',
 				scale: universe.context.planet.data('scale')
 			}, universe.context.planet);
-
 		};
 		
 		// Bind events
@@ -229,13 +183,59 @@ var universe = {
 		});
 		
 		if (universe.constant.ipad) {
+			document.getElementById('cosmos').ontouchstart = function(event) {
+				var _xAxis = (event.touches[0].pageX / universe.constant.viewportWidth) * 100;
+    			var _yAxis = ((event.touches[0].pageY - universe.context.overlay.height()) / (universe.constant.viewportHeight - universe.context.overlay.height())) * 100;
+				
+				// Animate to finger position
+				var from = {
+					xAxis: Xprev,
+					yAxis: Yprev
+				};
+				var to = {
+					xAxis: _xAxis,
+					yAxis: _yAxis
+				};
+				$(from).animate(to, {
+					duration: 250,
+					queue: false,
+					easing: 'linear',
+					step: function() {
+						update(this.xAxis, this.yAxis);
+					}, complete: function() {
+						// And back to center
+						var from = {
+							xAxis: Xprev,
+							yAxis: Yprev
+						};
+						var to = {
+							xAxis: 50,
+							yAxis: 50
+						};
+						$(from).animate(to, {
+							duration: 500,
+							easing: 'linear',
+							queue: false,
+							step: function() {
+								update(this.xAxis, this.yAxis);
+							}
+						});
+					}
+				});
+				
+				// Disable scrolling in landscape mode
+				if (universe.constant.viewportWidth > universe.constant.viewportHeight) {
+					event.preventDefault();
+					return false;
+				}
+			}
+			/*
 			if (window.DeviceMotionEvent !== undefined) {
 				motionRange = {
 					x: { min: 0, max: 0},
 					y: { min: 0, max: 0},
 					z: { min: 0, max: 0}
 				};
-				
 				window.ondevicemotion = function(event) {
 				  var accel = event.accelerationIncludingGravity;
 				  
@@ -260,7 +260,6 @@ var universe = {
 				  var ayPercentage = Math.round(((ay - motionRange.y.max) / (motionRange.y.min - motionRange.y.max)) * 100);
 				  var y = (universe.constant.viewportWidth / 100) * ayPercentage;
 				  
-				  
 				  $('#debug').html(
 					'ax: ' + axPercentage + '%<br />' +
 					'ay: ' + ayPercentage + '%<br />' +
@@ -272,25 +271,18 @@ var universe = {
 				  //$('#debug').html('ay min: ' + motionRange.y.min + '<br />ay max: ' + motionRange.y.max );
 				  update(y, x);
 				};
-			}
-			/*
-			window.ondevicemotion = function(event) {
-				x = event.rotationRate.alpha * 20;
-				y = Math.abs(event.rotationRate.beta) ;
-				z = event.rotationRate.gamma;
-				
-				$('#debug').html('x: ' + x + '<br />y: ' + y + '<br />z: ' + z);
-				update(x, 0);
 			}*/
 		} else {
 			$(window).on('mousemove', function(event) {
-				update(event.pageX, event.pageY);
+				var _xAxis = (event.pageX / universe.constant.viewportWidth) * 100;
+				var _yAxis = (event.pageY / universe.constant.viewportHeight) * 100;
+				update(_xAxis, _yAxis);
 			});
 		}
 		
 		$(window).scroll(function() {
 			if (universe.constant.viewportWidth > 900) {
-				$('html,body').animate({scrollTop: 0}, 0);
+				$('html, body').scrollTop(0);
 				event.preventDefault();
 				return false;
 			}
@@ -359,12 +351,21 @@ var universe = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 	
-	log: function (logline) {
-		if (typeof console != 'undefined' && universe.constant.debug) {
-			console.log(logline);
+	debug: function (message) {
+		if (universe.constant.debug) {
+			if ($('#debug').size() < 1) {
+				$('body').append('<div id="debug"></div>');
+			}
+			$('#debug').html(message);
 		}
 	},
-	
+
+	log: function (message) {
+		if (typeof console != 'undefined' && universe.constant.debug) {
+			console.log(message);
+		}
+	},
+		
 	inArray: function(needle, array1) {
 		for (j=0; j<array1.length; j++) {
 			if(array1[j]==needle) { return true; }

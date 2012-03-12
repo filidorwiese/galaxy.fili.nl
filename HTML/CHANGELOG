@@ -1,0 +1,8 @@
+
+* maart 2012 *
+- toevoeging parallax support iPad op basis van touch events
+- algeheel verbeterde parallax routines
+- iPad 3d support
+- update naar jQuery 1.7.1
+
+* eerste versie *
