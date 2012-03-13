@@ -7,7 +7,6 @@
          url('font/anton-webfont.svg#AntonRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -29,6 +28,7 @@ html, body {
 	height:100%;
 	min-width:860px;
 	overflow:hidden;
+	text-rendering: optimizeLegibility;
 }
 
 a {
@@ -85,7 +85,7 @@ li {
 
 div#overlay {
 	position:relative;
-	top:0;
+	top:-120px;
 	left:0;
 	z-index:100;
 	min-height:100px;
@@ -152,7 +152,6 @@ header ul#personal-information li a {
 }
 
 header ul#personal-information li a#google-badge {
-	/*visibility:hidden;*/
 	padding-left:15px;
 	background-repeat:no-repeat;
 	background-position:center left;
@@ -225,7 +224,7 @@ article a {
 	font-family:'AntonRegular', sans-serif;
     text-transform:uppercase;
     font-size:120%;
-    padding:0 3px 0 3px;
+	padding:0 3px 0 3px;
 }
 
 article a:active,
@@ -248,10 +247,14 @@ article #social-media .twitter-share-button {
 }
 
 div#theme-selector {
+	display:none;
 	position:absolute;
 	z-index:95;
 	bottom:40px;
 	left:40px;
+  	-webkit-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
 }
 
 div#theme-selector ul {
@@ -271,6 +274,9 @@ div#theme-selector a {
     -webkit-box-shadow: 0 0 25px #3ba5eb;
     -moz-box-shadow: 0 0 25px #3ba5eb;
     cursor:pointer;
+	-webkit-user-drag:none;
+	-moz-user-drag:none;
+	user-drag:none;
 }
 
 div#theme-selector a:hover,
@@ -335,10 +341,14 @@ div#theme-selector time span {
 }
 
 div#designer-credit {
+	display:none;
 	position:absolute;
 	z-index:95;
 	bottom:40px;
-	right:40px;
+	right:40px;	
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	user-select:none;
 }
 
 div#designer-credit a {
@@ -347,6 +357,9 @@ div#designer-credit a {
 	height:44px;
 	text-indent:-10000px;
 	background-image:url(/images/avth.png);
+	-webkit-user-drag:none;
+	-moz-user-drag:none;
+	user-drag:none;
 }
 
 section#cosmos {
@@ -358,6 +371,9 @@ section#cosmos {
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	user-select:none;
+	-webkit-user-drag:none;
+	-moz-user-drag:none;
+	user-drag:none;
 }
 
 div#galaxy {
@@ -384,8 +400,8 @@ div#nebula div,
 div#nebula canvas {
 	position:absolute;
 	z-index:11;
-	top:48%;
-	left:50%;
+	top:50%;
+	left:52%;
 	width:1292px;
 	height:752px;
 	margin:-376px 0 0 -646px;
@@ -405,20 +421,20 @@ div#stars {
 	height:885px;
 }
 
-div.star {
+div#stars div.star {
 	position:absolute;
 	width:17px;
 	height:17px;
 	background-image:url(/images/star-medium.png);
 }
 
-div.star.near {
+div#stars div.star.near {
 	width:26px;
 	height:26px;
 	background-image:url(/images/star-near.png);
 }
 
-div.star.distant {
+div#stars div.star.distant {
 	width:12px;
 	height:13px;
 	background-image:url(/images/star-distant.png);
@@ -430,7 +446,6 @@ div#planet {
 	width:460px;
 	height:489px;
 	margin:0;
-	margin:0 0 0 -35px;
 	background-image:url(/images/planet.png);
 	background-repeat:no-repeat;
 	background-position:bottom center;
@@ -483,6 +498,7 @@ div#color-two {
 }
 
 #awwwards {
+	display:none;
 	position:absolute;
 	top:48%;
 	right:0px;
@@ -495,6 +511,9 @@ div#color-two {
 	text-indent:-8000px;
 	display:block;
 	background:url(/images/award_day_white.png) no-repeat;
+	-webkit-user-drag:none;
+	-moz-user-drag:none;
+	user-drag:none;
 }
 
 #debug {

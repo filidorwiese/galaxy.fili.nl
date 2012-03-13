@@ -1,5 +1,8 @@
 
 * maart 2012 *
+- verbeterd verticaal centreren van planeet en karakter
+- twitter / google plus icon asynchroon laden
+- overlay komt nu insliden
 - toevoeging parallax support iPad op basis van touch events
 - algeheel verbeterde parallax routines
 - iPad 3d support

@@ -10,14 +10,14 @@ var overlay = {
 		overlay.relExternal();
 		overlay.themeSwitcher();
 		
-		$('hgroup a').click(function(){
+		$('hgroup a').on('click', function(){
 			if (!universe.context.overlay.hasClass('is-open')) {
 				overlay.toggleTab();
 				overlay.showArticle('over-mij');
 			}
 		});
 		
-		$('#unfold a', universe.context.overlay).click(function(event){
+		$('#unfold a', universe.context.overlay).on('click', function(event){
 			overlay.toggleTab();
 			if (universe.context.overlay.hasClass('is-open')) {
 				var _hash = overlay.getHash();
@@ -27,6 +27,20 @@ var overlay = {
 			event.preventDefault();
 			return false;
 		});
+		
+		// slide & fade in
+		setTimeout(function(){
+			universe.context.overlay.animate({
+				top: 0
+			}, {
+				easing: 'linear',
+				duration: 500,
+				queue: false,
+				complete: function(){
+					$('#designer-credit, #awwwards, #theme-selector').fadeIn(1000);
+				}
+			});
+		}, 500);
 		
 		$(window).hashchange(function(event){
 			var _hash = overlay.getHash();
@@ -48,7 +62,7 @@ var overlay = {
 	themeSwitcher: function() {
 		if (universe.constant.iphone || universe.constant.android) { return; }
 		
-		$('a', universe.context.themeSelector).click(function(){
+		$('a', universe.context.themeSelector).on('click', function(){
 			universe.loadTheme($(this).attr('class'));
 			window.clearInterval(overlay.constant.clock);
 			overlay.constant.clock = false;
@@ -75,13 +89,13 @@ var overlay = {
 				$('time', universe.context.themeSelector).html(themeSelected.data('start-time') + '<span>-</span>' + themeSelected.data('end-time'));
 			}
 		});
-		
 	},
 	
 	toggleTab: function() {
-		if (universe.context.overlay.is(':animated')) { return; }
+		//if (universe.context.overlay.is(':animated')) { return; }
 		if (universe.context.overlay.hasClass('is-open')) {
 			universe.context.overlay.toggleClass('is-open');
+			document.location = '#';
 			universe.context.overlay.animate({
 				height: 100
 			}, {
@@ -116,6 +130,7 @@ var overlay = {
 	showArticle: function(articleId) {
 		if (articleId == undefined || articleId === '') {
 			articleId = 'over-mij';
+			document.location = '#' + articleId;
 		}
 		
 		if (!$('article#page-' + articleId, universe.context.overlay).size()) { return; }
@@ -131,9 +146,9 @@ var overlay = {
 			// No flash on Ios
 			$('a#google-badge', universe.context.overlay).css({
 				textDecoration: 'line-through'
-			}).click(function(){ return false; });
+			}).on('click', function(){ return false; });
 		} else {
-			$('a#google-badge', universe.context.overlay).click(function(){
+			$('a#google-badge', universe.context.overlay).on('click', function(){
 				var googleBadgeUrl = 'http://www.google.com/talk/service/badge/Start?tk=z01q6amlqov2a23bb7uknq1c78e9cnkvqdclsevou1kdkuto0sm4rrarpde4u7po9ddht0557eoo7n2t0fk5e5mi4cnf3hoe7vm34270maob44kar1jsg08vb0nj71b0u45frpqn1rhcvtj3fuhjv0imkra2vdufm5hafquol';
 				window.open(googleBadgeUrl, 'chatsession', 'left=200,top=200,height=350,width=300,fullscreen=0,dependent=1,resizable=1,scrollbars=0,status=0,titlebar=0,toolbar=0', false);
 				return false;

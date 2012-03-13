@@ -40,7 +40,7 @@ var planet = {
 		} else {
 			var _animationObject = theme.planet.animations[_animation];
 			
-			$('#spriteFili', universe.context.planet).spriteAnimator(_animationObject).bind('stop', function(){
+			$('#spriteFili', universe.context.planet).spriteAnimator(_animationObject).on('stop', function(){
 				planet.spriteFili();
 			});
 		}
@@ -53,7 +53,7 @@ var planet = {
 		var _animation = theme.planet.spriteSignal[planet.constant.spriteSignalIterator];
 		var _animationObject = theme.planet.animations[_animation];
 		
-		$('#spriteSignal', universe.context.planet).spriteAnimator(_animationObject).bind('stop', function(){
+		$('#spriteSignal', universe.context.planet).spriteAnimator(_animationObject).on('stop', function(){
 			planet.spriteSignal();
 		});
 	},
@@ -65,7 +65,7 @@ var planet = {
 		var _animation = theme.planet.spriteExtra[planet.constant.spriteExtraIterator];
 		var _animationObject = theme.planet.animations[_animation];
 		
-		$('#spriteExtra', universe.context.planet).spriteAnimator(_animationObject).bind('stop', function(){
+		$('#spriteExtra', universe.context.planet).spriteAnimator(_animationObject).on('stop', function(){
 			planet.spriteExtra();
 		});
 	},

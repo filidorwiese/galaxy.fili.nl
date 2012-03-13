@@ -18,7 +18,7 @@
 	}
 	
 	#awwwards {
-		display:none;
+		display:none !important;
 	}
 }
 

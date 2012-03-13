@@ -1,7 +1,4 @@
 
-// http://jdbartlett.github.com/innershiv | WTFPL License
-window.innerShiv=(function(){var d,r;return function(h,u){if(!d){d=document.createElement('div');r=document.createDocumentFragment();/*@cc_on d.style.display = 'none'@*/}var e=d.cloneNode(true);/*@cc_on document.body.appendChild(e);@*/e.innerHTML=h.replace(/^\s\s*/, '').replace(/\s\s*$/, '');/*@cc_on document.body.removeChild(e);@*/if(u===false)return e.childNodes;var f=r.cloneNode(true),i=e.childNodes.length;while(i--)f.appendChild(e.firstChild);return f}}());
-
 var universe = {
 	constant: {
 		debug: true,
@@ -38,7 +35,7 @@ var universe = {
 		
 		if ($.browser.msie) {
 			if ($.browser.version == '6.0') { $('body').addClass('no-js') }
-			_cosmos = innerShiv(_cosmos);
+			_cosmos = _cosmos;
 		}
 		$('body').append(_cosmos);
 		
@@ -95,6 +92,7 @@ var universe = {
 		universe.log('And then there was light');
 		universe.context.cosmos.fadeTo(3000, 1);
 		
+//		planetScale = 0;
 		var _startScale = 85;
 		var _onePercent = ((100 - _startScale) / 100);
 		universe.context.planet.animate({
@@ -125,8 +123,8 @@ var universe = {
 			universe.constant.viewportHeight = $(window).height();
 			var offsetHeight = universe.constant.viewportHeight - (universe.context.cosmos.offset().top / 2);
 			
-			planetTop = parseInt(((offsetHeight / 100)*45) - (universe.context.planet.height() / 2), 10);
-			planetLeft = parseInt(((universe.constant.viewportWidth / 100)*50) - (universe.context.planet.width() / 2), 10);
+			planetTop = parseInt(((offsetHeight / 100)*49) - (universe.context.planet.height() / 2), 10);
+			planetLeft = parseInt(((universe.constant.viewportWidth / 100)*54) - (universe.context.planet.width() / 2), 10);
 			starsTop = parseInt((offsetHeight / 2) - (universe.context.stars.height() / 2), 10);
 			starsLeft = parseInt((universe.constant.viewportWidth / 2) - (universe.context.stars.width() / 2), 10);
 			nebulaTop = parseInt((offsetHeight / 2) - (universe.context.nebula.height() / 2), 10);
@@ -134,13 +132,17 @@ var universe = {
 			galaxyTop = parseInt((offsetHeight / 2) - (universe.context.galaxy.height() / 2), 10);
 			galaxyLeft = parseInt((universe.constant.viewportWidth / 2) - (universe.context.galaxy.width() / 2), 10);
 			
+			// Sweet trick to always vertical align character
+			planetTop = Math.abs(planetTop);
+			
+			//universe.debug('nebulaTop: ' + nebulaTop);
 			update();
 		};
 		
 		var update = function(xAxis, yAxis) {
 			if (xAxis == undefined || yAxis == undefined) { xAxis = Xprev; yAxis = Yprev; offsetXprev = offsetYprev = 0;}
-			var offsetX = (maxParallaxX / 100) * xAxis * -1;
-			var offsetY = (maxParallaxY / 100) * yAxis * -1;
+			var offsetX = (maxParallaxX / 100) * xAxis;
+			var offsetY = (maxParallaxY / 100) * yAxis;
 			if (offsetX == offsetXprev && offsetY == offsetYprev) { return false; }
 			
 			offsetXprev = offsetX;
@@ -149,7 +151,7 @@ var universe = {
 			Yprev = yAxis;
 			
 			// debug
-			universe.debug('xAxis: ' + xAxis + '<br />yAxis: ' + yAxis);
+			//universe.debug('xAxis: ' + xAxis + '<br />yAxis: ' + yAxis);
 			
 			// parallax effect
 			universe.transform({
@@ -169,13 +171,13 @@ var universe = {
 			
 			universe.transform({
 				top: (planetTop - (offsetY / 2)) + 'px',
-				left: (planetLeft - (offsetX / 2)) + 'px',
-				scale: universe.context.planet.data('scale')
+				left: (planetLeft - (offsetX / 2)) + 'px'
+				//scale: universe.context.planet.data('scale')
 			}, universe.context.planet);
 		};
 		
 		// Bind events
-		$(window).resize(function(event) {
+		$(window).on('resize', function(event) {
 			var newThrottle = new Date().getTime();
 			if (newThrottle - throttle < 10) { return; }
 			throttle = newThrottle;
@@ -183,9 +185,106 @@ var universe = {
 		});
 		
 		if (universe.constant.ipad) {
+			var maxParallaxX = maxParallaxX * 2;
+			var maxParallaxY = maxParallaxY * 1.5;
+			
+			// touch
 			document.getElementById('cosmos').ontouchstart = function(event) {
-				var _xAxis = (event.touches[0].pageX / universe.constant.viewportWidth) * 100;
-    			var _yAxis = ((event.touches[0].pageY - universe.context.overlay.height()) / (universe.constant.viewportHeight - universe.context.overlay.height())) * 100;
+				if (event.touches.length > 1) { return; }
+				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+				universe.debug(event.touches.length);
+				
+				// Animate to finger position
+				var from = {
+					xAxis: Xprev,
+					yAxis: Yprev
+				};
+				var to = {
+					xAxis: _xAxis,
+					yAxis: _yAxis
+				};
+				$(from).animate(to, {
+					duration: 100,
+					queue: true,
+					easing: 'easeInCirc',
+					step: function() {
+						update(this.xAxis, this.yAxis);
+					}
+				});
+				
+				// Follow finger position
+				this.ontouchmove = function(event) {
+					var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+					var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+					update(_xAxis, _yAxis);
+					
+					event.preventDefault();
+					return false;
+				}
+				
+				// And back to center on touchend
+				this.ontouchend = function(event) {
+					var from = {
+						xAxis: Xprev,
+						yAxis: Yprev
+					};
+					var to = {
+						xAxis: 50,
+						yAxis: 50
+					};
+					$(from).animate(to, {
+						duration: 500,
+						easing: 'easeOutBack',
+						queue: false,
+						step: function() {
+							update(this.xAxis, this.yAxis);
+						}
+					});
+					event.preventDefault();
+					return false;
+				}
+			}
+			
+			// gestures
+			document.getElementById('cosmos').ongesturechange = function(event) {
+				//if (event.touches.length < 2) { return; }
+				var _scale = event.scale;
+				universe.debug(_scale);
+				universe.transform({
+					scale: _scale
+				}, universe.context.planet);
+				
+				this.ongestureend = function(event) {
+					
+				}
+				
+				event.preventDefault();
+				return false;
+			}
+			
+			
+			/*
+			document.getElementById('cosmos').ontouchmove = function(event) {
+				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+				//universe.debug('xAxis: ' + _xAxis + '<br />yAxis: ' + _yAxis);
+				
+				// Follow finger position
+				update(_xAxis, _yAxis);
+				
+				event.preventDefault();
+				return false;
+			}*/
+			
+			/*
+			document.getElementById('cosmos').ontouchstart = function(event) {
+				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+				
+				// debug
+				//universe.debug(universe.context.cosmos.height());
+				//universe.debug('xAxis: ' + _xAxis + '<br />yAxis: ' + _yAxis);
 				
 				// Animate to finger position
 				var from = {
@@ -228,7 +327,8 @@ var universe = {
 					event.preventDefault();
 					return false;
 				}
-			}
+			}*/
+			
 			/*
 			if (window.DeviceMotionEvent !== undefined) {
 				motionRange = {
@@ -279,14 +379,14 @@ var universe = {
 				update(_xAxis, _yAxis);
 			});
 		}
-		
+		/*
 		$(window).scroll(function() {
 			if (universe.constant.viewportWidth > 900) {
 				$('html, body').scrollTop(0);
 				event.preventDefault();
 				return false;
 			}
-		});
+		});*/
 		
 		// Set stage for the first time
 		resize();
@@ -312,7 +412,7 @@ var universe = {
 			}
 			
 			if (transform.length) {
-				var vendorPrefixes = ['', '-webkit-', '-moz-', '-o-'];
+				var vendorPrefixes = ['', '-webkit-', '-moz-', '-o-', '-ms-'];
 				for (var i = vendorPrefixes.length - 1; i >= 0; i--) {
 					css[vendorPrefixes[i] + 'transform'] = transform.join(' ');
 					css[vendorPrefixes[i] + 'transform-origin'] = '50% 50%';
@@ -389,3 +489,4 @@ if (typeof window.jQuery != 'undefined') {
 		universe.init();
 	});
 }
+
