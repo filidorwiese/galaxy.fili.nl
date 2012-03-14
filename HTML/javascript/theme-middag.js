@@ -441,6 +441,13 @@ var theme = {
 		],
 		spriteExtra: ['empty', 'ossybot-los', 'ossybot-los-zweef'],
 		spriteSignal: ['signal-normaal', 'signal-snel']
+	},
+	
+	universe: {
+		animations: {
+		},
+		
+		spriteOutside: ['empty']
 	}
 	
 };

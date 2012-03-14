@@ -23,7 +23,8 @@ var universe = {
 		
 		// Detect transform support
 		if (universe.constant.useTransforms) {
-			thisBody = document.body || document.documentElement, thisStyle = thisBody.style;
+			var thisBody = document.body || document.documentElement;
+			var thisStyle = thisBody.style;
 			universe.constant.transformSupport = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined;
 			if (universe.constant.transformSupport) { universe.log('Detected CSS3 transformation support'); }
 			if (universe.constant.ipad) { universe.constant.useTranslate3d = true; }
@@ -34,8 +35,7 @@ var universe = {
 					  '<div id="planet"></div><div id="space-debris"></div></section>';
 		
 		if ($.browser.msie) {
-			if ($.browser.version == '6.0') { $('body').addClass('no-js') }
-			_cosmos = _cosmos;
+			if ($.browser.version == '6.0') { $('body').addClass('no-js'); }
 		}
 		$('body').append(_cosmos);
 		
@@ -84,7 +84,7 @@ var universe = {
 			planet.loadTheme();
 			nebula.loadTheme();
 			overlay.loadTheme();
-			if (!universe.context.cosmos.is(':visible')) { setTimeout(universe.letThereBelight, 1500); }
+			if (!universe.context.cosmos.is(':visible')) { setTimeout(universe.letThereBelight, 1000); }
 		});
 	},
 	
@@ -92,17 +92,15 @@ var universe = {
 		universe.log('And then there was light');
 		universe.context.cosmos.fadeTo(3000, 1);
 		
-//		planetScale = 0;
-		var _startScale = 85;
-		var _onePercent = ((100 - _startScale) / 100);
-		universe.context.planet.animate({
-			step: 100
-		}, {
-			easing: 'swing',
+		// Scale in
+		var from = { scale: 0.85 };
+		var to = { scale: 1 };
+		$(from).animate(to, {
 			duration: 3000,
+			easing: 'swing',
+			queue: false,
 			step: function(step) {
-				scale = (_startScale + (_onePercent * step)) / 100;
-				universe.context.planet.data('scale', scale);
+				planetScale = step;
 				$(window).trigger('resize');
 			}
 		});
@@ -121,10 +119,11 @@ var universe = {
 		var resize = function(event) {
 			universe.constant.viewportWidth = $(window).width();
 			universe.constant.viewportHeight = $(window).height();
-			var offsetHeight = universe.constant.viewportHeight - (universe.context.cosmos.offset().top / 2);
+			var offsetHeight = universe.context.cosmos.height();
 			
-			planetTop = parseInt(((offsetHeight / 100)*49) - (universe.context.planet.height() / 2), 10);
-			planetLeft = parseInt(((universe.constant.viewportWidth / 100)*54) - (universe.context.planet.width() / 2), 10);
+			planetTop = parseInt((offsetHeight * 0.40) - (universe.context.planet.height() / 2), 10);
+			planetLeft = parseInt((universe.constant.viewportWidth * 0.54) - (universe.context.planet.width() / 2), 10);
+			planetScale = (typeof planetScale != 'undefined' ? planetScale : 1);
 			starsTop = parseInt((offsetHeight / 2) - (universe.context.stars.height() / 2), 10);
 			starsLeft = parseInt((universe.constant.viewportWidth / 2) - (universe.context.stars.width() / 2), 10);
 			nebulaTop = parseInt((offsetHeight / 2) - (universe.context.nebula.height() / 2), 10);
@@ -132,26 +131,24 @@ var universe = {
 			galaxyTop = parseInt((offsetHeight / 2) - (universe.context.galaxy.height() / 2), 10);
 			galaxyLeft = parseInt((universe.constant.viewportWidth / 2) - (universe.context.galaxy.width() / 2), 10);
 			
-			// Sweet trick to always vertical align character
-			planetTop = Math.abs(planetTop);
-			
-			//universe.debug('nebulaTop: ' + nebulaTop);
 			update();
 		};
 		
 		var update = function(xAxis, yAxis) {
-			if (xAxis == undefined || yAxis == undefined) { xAxis = Xprev; yAxis = Yprev; offsetXprev = offsetYprev = 0;}
-			var offsetX = (maxParallaxX / 100) * xAxis;
-			var offsetY = (maxParallaxY / 100) * yAxis;
-			if (offsetX == offsetXprev && offsetY == offsetYprev) { return false; }
+			if (xAxis === undefined || yAxis === undefined) { xAxis = Xprev; yAxis = Yprev; }// offsetXprev = offsetYprev = 0;}
+			var offsetX = parseInt(((maxParallaxX / 100) * xAxis) - (maxParallaxX / 2), 10);
+			var offsetY = parseInt(((maxParallaxY / 100) * yAxis) - (maxParallaxY / 2), 10);
+			//if (offsetX == offsetXprev && offsetY == offsetYprev) { return false; }
 			
-			offsetXprev = offsetX;
-			offsetYprev = offsetY;
+			//offsetXprev = offsetX;
+			//offsetYprev = offsetY;
 			Xprev = xAxis;
 			Yprev = yAxis;
 			
 			// debug
+			//universe.debug('offsetX: ' + offsetX + '<br />offsetY: ' + offsetY);
 			//universe.debug('xAxis: ' + xAxis + '<br />yAxis: ' + yAxis);
+			//universe.debug(planetScale);
 			
 			// parallax effect
 			universe.transform({
@@ -171,12 +168,12 @@ var universe = {
 			
 			universe.transform({
 				top: (planetTop - (offsetY / 2)) + 'px',
-				left: (planetLeft - (offsetX / 2)) + 'px'
-				//scale: universe.context.planet.data('scale')
+				left: (planetLeft - (offsetX / 2)) + 'px',
+				scale: planetScale
 			}, universe.context.planet);
 		};
 		
-		// Bind events
+		// Viewport resize event
 		$(window).on('resize', function(event) {
 			var newThrottle = new Date().getTime();
 			if (newThrottle - throttle < 10) { return; }
@@ -184,18 +181,17 @@ var universe = {
 			resize();
 		});
 		
+		// iPad touch
 		if (universe.constant.ipad) {
-			var maxParallaxX = maxParallaxX * 2;
-			var maxParallaxY = maxParallaxY * 1.5;
+			maxParallaxX = maxParallaxX * 5;
+			maxParallaxY = maxParallaxY * 5;
 			
-			// touch
+			// Animate to finger position on touchstart
 			document.getElementById('cosmos').ontouchstart = function(event) {
-				if (event.touches.length > 1) { return; }
 				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
 				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
-				universe.debug(event.touches.length);
 				
-				// Animate to finger position
+				// Animate to finger position on touchstart
 				var from = {
 					xAxis: Xprev,
 					yAxis: Yprev
@@ -205,188 +201,76 @@ var universe = {
 					yAxis: _yAxis
 				};
 				$(from).animate(to, {
-					duration: 100,
+					duration: 150,
 					queue: true,
-					easing: 'easeInCirc',
+					easing: 'linear',
 					step: function() {
 						update(this.xAxis, this.yAxis);
 					}
 				});
-				
-				// Follow finger position
-				this.ontouchmove = function(event) {
-					var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
-					var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
-					update(_xAxis, _yAxis);
-					
-					event.preventDefault();
-					return false;
-				}
-				
-				// And back to center on touchend
-				this.ontouchend = function(event) {
-					var from = {
-						xAxis: Xprev,
-						yAxis: Yprev
-					};
-					var to = {
-						xAxis: 50,
-						yAxis: 50
-					};
-					$(from).animate(to, {
-						duration: 500,
-						easing: 'easeOutBack',
-						queue: false,
-						step: function() {
-							update(this.xAxis, this.yAxis);
-						}
-					});
-					event.preventDefault();
-					return false;
-				}
-			}
+			};
 			
-			// gestures
-			document.getElementById('cosmos').ongesturechange = function(event) {
-				//if (event.touches.length < 2) { return; }
-				var _scale = event.scale;
-				universe.debug(_scale);
-				universe.transform({
-					scale: _scale
-				}, universe.context.planet);
-				
-				this.ongestureend = function(event) {
-					
-				}
-				
-				event.preventDefault();
-				return false;
-			}
-			
-			
-			/*
+			// Follow finger position on touchmove
 			document.getElementById('cosmos').ontouchmove = function(event) {
 				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
 				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
-				//universe.debug('xAxis: ' + _xAxis + '<br />yAxis: ' + _yAxis);
-				
-				// Follow finger position
 				update(_xAxis, _yAxis);
 				
 				event.preventDefault();
 				return false;
-			}*/
+			};
 			
-			/*
-			document.getElementById('cosmos').ontouchstart = function(event) {
-				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
-				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
-				
-				// debug
-				//universe.debug(universe.context.cosmos.height());
-				//universe.debug('xAxis: ' + _xAxis + '<br />yAxis: ' + _yAxis);
-				
-				// Animate to finger position
+			// Center on touchend
+			document.getElementById('cosmos').ontouchend = function(event) {
 				var from = {
 					xAxis: Xprev,
 					yAxis: Yprev
 				};
 				var to = {
-					xAxis: _xAxis,
-					yAxis: _yAxis
+					xAxis: 50,
+					yAxis: 50
 				};
 				$(from).animate(to, {
-					duration: 250,
+					duration: 500,
+					easing: 'easeOutBack',
 					queue: false,
-					easing: 'linear',
 					step: function() {
 						update(this.xAxis, this.yAxis);
-					}, complete: function() {
-						// And back to center
-						var from = {
-							xAxis: Xprev,
-							yAxis: Yprev
-						};
-						var to = {
-							xAxis: 50,
-							yAxis: 50
-						};
-						$(from).animate(to, {
-							duration: 500,
-							easing: 'linear',
-							queue: false,
-							step: function() {
-								update(this.xAxis, this.yAxis);
-							}
-						});
 					}
 				});
-				
-				// Disable scrolling in landscape mode
-				if (universe.constant.viewportWidth > universe.constant.viewportHeight) {
-					event.preventDefault();
-					return false;
-				}
-			}*/
+				event.preventDefault();
+				return false;
+			};
 			
-			/*
-			if (window.DeviceMotionEvent !== undefined) {
-				motionRange = {
-					x: { min: 0, max: 0},
-					y: { min: 0, max: 0},
-					z: { min: 0, max: 0}
+			// Scale on iPad pinch gesture
+			document.getElementById('cosmos').ongesturechange = function(event) {
+				planetScale = event.scale;
+				update();
+				
+				this.ongestureend = function(event) {
+					var from = { scale: planetScale };
+					var to = { scale: 1 };
+					$(from).animate(to, {
+						duration: 500,
+						easing: 'easeOutBack',
+						queue: false,
+						step: function(step) {
+							planetScale = step;
+							update();
+						}
+					});
 				};
-				window.ondevicemotion = function(event) {
-				  var accel = event.accelerationIncludingGravity;
-				  
-				  // X-axis
-				  var ax = Math.round(accel.x * 100);
-				  if (ax < motionRange.x.min) motionRange.x.min = ax;
-				  if (ax > motionRange.x.max) motionRange.x.max = ax;
-				  var axPercentage = Math.round(((ax - motionRange.x.max) / (motionRange.x.min - motionRange.x.max)) * 100);
-				  var x = (universe.constant.viewportHeight / 100) * axPercentage;
-				  
-				  // Z-axis
-				  var az = Math.round(accel.z * 100);
-				  if (az < motionRange.z.min) motionRange.z.min = az;
-				  if (az > motionRange.z.max) motionRange.z.max = az;
-				  var azPercentage = Math.round(((az - motionRange.z.max) / (motionRange.z.min - motionRange.z.max)) * 100);
-				  var z = (universe.constant.viewportHeight / 100) * azPercentage;
-				  
-				  // Y-axis
-				  var ay = Math.round(accel.y * 100);
-				  if (ay < motionRange.y.min) motionRange.y.min = ay;
-				  if (ay > motionRange.y.max) motionRange.y.max = ay;
-				  var ayPercentage = Math.round(((ay - motionRange.y.max) / (motionRange.y.min - motionRange.y.max)) * 100);
-				  var y = (universe.constant.viewportWidth / 100) * ayPercentage;
-				  
-				  $('#debug').html(
-					'ax: ' + axPercentage + '%<br />' +
-					'ay: ' + ayPercentage + '%<br />' +
-					'az: ' + azPercentage + '%'
-				  );
-				  //$('#debug').html('ay: ' + ay + '<br />' + ayPercentage + '%<br />y: ' + y);
-				  //$('#debug').html('ax: ' + ax + '<br />' + axPercentage + '%<br />x: ' + x);
-				  //$('#debug').html('ax: ' + ax + '<br />ay: ' + ay + '<br />az: ' + az);
-				  //$('#debug').html('ay min: ' + motionRange.y.min + '<br />ay max: ' + motionRange.y.max );
-				  update(y, x);
-				};
-			}*/
+				
+				event.preventDefault();
+				return false;
+			};
 		} else {
-			$(window).on('mousemove', function(event) {
+			$(document).on('mousemove', function(event) {
 				var _xAxis = (event.pageX / universe.constant.viewportWidth) * 100;
 				var _yAxis = (event.pageY / universe.constant.viewportHeight) * 100;
 				update(_xAxis, _yAxis);
 			});
 		}
-		/*
-		$(window).scroll(function() {
-			if (universe.constant.viewportWidth > 900) {
-				$('html, body').scrollTop(0);
-				event.preventDefault();
-				return false;
-			}
-		});*/
 		
 		// Set stage for the first time
 		resize();
@@ -428,8 +312,12 @@ var universe = {
 		if (universe.constant.ios || universe.constant.android) { return; }
 		universe.log('Universe: registering keystrokes');
 		
-		$(document).keyup(function(e) {
-			switch(e.keyCode) {
+		var konamiKeys = [];
+		konamiCode = "38,38,40,40,37,39,37,39,66,65";
+		konamiCode = "38,38,40,40";
+		
+		$(document).keyup(function(event) {
+			switch(event.keyCode) {
 				case 27: // Esc
 					if (universe.context.overlay.hasClass('is-open')) {
 						$('#unfold a', universe.context.overlay).trigger('click');
@@ -440,8 +328,15 @@ var universe = {
 					nebula.toggleColorPicker();
 				break;
 				
-				default:
-					universe.log('Key pressed: ' + e.keyCode);
+				default: // konami
+					konamiKeys.push( event.keyCode );
+					while (konamiKeys.length > konamiCode.split(',').length) {
+						konamiKeys.shift();
+					}
+					if ( konamiKeys.toString().indexOf( konamiCode ) >= 0 ){
+						universe.loadTheme('theme-konami');
+					}
+					universe.log('Key pressed: ' + event.keyCode);
 				break;
 			}
 		});

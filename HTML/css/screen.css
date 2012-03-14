@@ -141,7 +141,7 @@ header ul#personal-information {
 
 header ul#personal-information li {
 	float:left;
-	width:160px;
+	min-width:160px;
 	padding:0;
 	margin:0 0 6px 0;
 }
@@ -223,7 +223,7 @@ article#page-over-mij {
 article a {
 	font-family:'AntonRegular', sans-serif;
     text-transform:uppercase;
-    font-size:120%;
+    font-size:115%;
 	padding:0 3px 0 3px;
 }
 
@@ -233,17 +233,17 @@ article a:hover {
 	background-color:#eaeaea;
 }
 
-article #social-media {
-	float:left;
-	margin-top:10px;
+article ul#social-media {
+	margin-top:20px;
 }
 
-article #social-media iframe {
+article ul#social-media li {
 	float:left;
+	margin-right:5px;
 }
 
-article #social-media .twitter-share-button {
-	margin-right:8px;
+article ul#social-media li:last-child {
+	margin-left:4px;
 }
 
 div#theme-selector {
@@ -366,7 +366,7 @@ section#cosmos {
 	display:none;
 	position:relative;
 	height:100%;
-	min-height:620px;
+	min-height:640px;
 	overflow:hidden;
 	-webkit-user-select:none;
 	-moz-user-select:none;
@@ -400,7 +400,7 @@ div#nebula div,
 div#nebula canvas {
 	position:absolute;
 	z-index:11;
-	top:50%;
+	top:45%;
 	left:52%;
 	width:1292px;
 	height:752px;
@@ -451,6 +451,10 @@ div#planet {
 	background-position:bottom center;
 }
 
+div#planet > div {
+	border:1px solid orange;
+}
+
 div#space-dust {
 	position:absolute;
 	z-index:40;
@@ -462,18 +466,30 @@ div#space-dust {
 	opacity:.1;
 }
 
-div#spriteEyes2,
-div#spriteEyes1 {
+div#planet div#spriteEyes2,
+div#planet div#spriteEyes1 {
 	opacity:.3;
 }
 
-div#spriteExtra {
+div#planet div#spriteExtra {
 	z-index:31;
 }
 
-div#spriteSignal {
+div#planet div#spriteSignal {
 	opacity:.6;
 }
+
+/*
+div#spriteOutside {
+	position:absolute;
+	top:100px;
+	left:50%;
+	z-index:95;
+	width:400px;
+	height:100px;
+	margin-left:-200px;
+	background-color:lime;
+}*/
 
 div#color-one {
 	border:1px solid #ccc;
@@ -520,8 +536,9 @@ div#color-two {
 	position:absolute;
 	top:100px;
 	left:0;
-	z-index:99;
-	width:500px;
+	z-index:199;
+	width:250px;
 	min-height:50px;
 	padding:20px;
+	background-color:orange;
 }

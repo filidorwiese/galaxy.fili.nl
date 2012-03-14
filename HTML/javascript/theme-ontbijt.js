@@ -217,6 +217,13 @@ var theme = {
 		],
 		spriteExtra: ['empty'],
 		spriteSignal: ['signal-normaal', 'empty']
+	},
+	
+	universe: {
+		animations: {
+		},
+		
+		spriteOutside: ['empty']
 	}
 	
 };

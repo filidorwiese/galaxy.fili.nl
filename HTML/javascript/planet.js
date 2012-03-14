@@ -10,6 +10,7 @@ var planet = {
 		// Built markup
 		universe.context.planet.append('<div id="spriteFili"></div><div id="spriteExtra"></div><div id="spriteSignal"></div>');
 		universe.context.planet.append('<div id="spriteEyes1"></div><div id="spriteEyes2"></div>');
+		universe.context.body.append('<div id="spriteOutside"></div>');
 		
 		planet.spaceDebris();
 	},
@@ -19,12 +20,14 @@ var planet = {
 		planet.constant.spriteFiliIterator = -1;
 		planet.constant.spriteExtraIterator = -1;
 		planet.constant.spriteSignalIterator = -1;
+		planet.constant.spriteOutsideIterator = -1;
 		
 		planet.preloadSprites();
 		planet.spriteFili();
 		planet.spriteExtra();
 		planet.spriteSignal();
 		planet.spriteEyes();
+		//planet.spriteOutside();
 	},
 	
 	spriteFili: function() {
@@ -114,6 +117,18 @@ var planet = {
 				{frame: 1, delay: 2000},
 				{frame: 2, delay: 2000}
 			]
+		});
+	},
+	
+	spriteOutside: function() {
+		planet.constant.spriteOutsideIterator += 1;
+		if (planet.constant.spriteOutsideIterator >= theme.planet.spriteOutside.length) { planet.constant.spriteOutsideIterator = 0; }
+		
+		var _animation = theme.planet.spriteOutside[planet.constant.spriteOutsideIterator];
+		var _animationObject = theme.planet.animations[_animation];
+		
+		$('#spriteOutside', universe.context.planet).spriteAnimator(_animationObject).on('stop', function(){
+			planet.spriteOutside();
 		});
 	},
 	

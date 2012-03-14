@@ -1,11 +1,13 @@
 
 * maart 2012 *
+- ie7 / ie8 ondersteuning verbeterd
+- uiterlijke verbeteringen voor iphone
 - verbeterd verticaal centreren van planeet en karakter
 - twitter / google plus icon asynchroon laden
 - overlay komt nu insliden
-- toevoeging parallax support iPad op basis van touch events
+- iPad touch en gesture support
 - algeheel verbeterde parallax routines
 - iPad 3d support
 - update naar jQuery 1.7.1
 
-* eerste versie *
+* eerste versie juli 2011 *

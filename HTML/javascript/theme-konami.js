@@ -7,6 +7,9 @@ var theme = {
 		diameter: 75
 	},
 	
+	audio: {
+	},
+	
 	planet: {
 		animations: {
 			'empty': {
@@ -66,11 +69,16 @@ var theme = {
 		},
 		
 		spriteFili: [
-			 'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd', 'fili-omdraai-reversed',
+			 'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd', 'fili-omdraai-reversed'
 		],
 		spriteExtra: ['empty'],
-		spriteSignal: ['empty'],
-		spriteOutside: ['empty']
+		spriteSignal: ['empty']
+	},
+	
+	universe: {
+		spriteOutside: [
+			'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd', 'fili-omdraai-reversed'
+		]
 	}
 	
 };

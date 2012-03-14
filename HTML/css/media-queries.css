@@ -14,7 +14,7 @@
 		left:0;
 		margin-left:0;
 		width:100% !important;
-		min-height:1200px !important;
+		min-height:1100px !important;
 	}
 	
 	#awwwards {
@@ -37,6 +37,11 @@
 		top:100px !important;
 		clear:both;
 	}
+	
+	article ul#social-media li {
+		float:none;
+		margin-bottom:10px;
+	}
 }
 
 
@@ -51,7 +56,4 @@
 	header ul#personal-information li {
 		min-width:120px;
 	}
-}
-
-@media screen and (min-width: 900px) {
 }

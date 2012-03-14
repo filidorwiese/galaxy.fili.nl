@@ -85,6 +85,13 @@ var theme = {
 		],
 		spriteExtra: ['empty'],
 		spriteSignal: ['empty']
+	},
+	
+	universe: {
+		animations: {
+		},
+		
+		spriteOutside: ['empty']
 	}
 	
 };
