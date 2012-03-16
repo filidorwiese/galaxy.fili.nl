@@ -28,7 +28,6 @@ html, body {
 	height:100%;
 	min-width:860px;
 	overflow:hidden;
-	text-rendering: optimizeLegibility;
 }
 
 a {
@@ -451,10 +450,6 @@ div#planet {
 	background-position:bottom center;
 }
 
-div#planet > div {
-	border:1px solid orange;
-}
-
 div#space-dust {
 	position:absolute;
 	z-index:40;
@@ -471,7 +466,7 @@ div#planet div#spriteEyes1 {
 	opacity:.3;
 }
 
-div#planet div#spriteExtra {
+div#planet div#spriteOssy {
 	z-index:31;
 }
 

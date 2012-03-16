@@ -58,36 +58,6 @@ var universe = {
 		overlay.init();
 	},
 	
-	loadTheme: function(themeToLoad) {
-		if (universe.constant.iphone || universe.constant.android) { return; }
-		
-		if (typeof theme !== 'undefined') {
-			if (themeToLoad == theme.name) { return; }
-		} else {
-			// Select theme by the current time
-			var time = new Date();
-			$('a', universe.context.themeSelector).each(function(){
-				var _startTime = $(this).data('start-time').split(':');
-				var _compare = new Date();
-				_compare.setHours(_startTime[0]);
-				_compare.setMinutes(_startTime[1]);
-				if (time > _compare) {
-					themeToLoad = $(this).attr('class');
-				}
-			});
-			nebula.init();
-			planet.init();
-		}
-		$.getScript('/min/?f=javascript/' + themeToLoad + '.js&' + new Date().getTime(), function() {
-			universe.context.body.data('theme', themeToLoad);
-			universe.log('Loaded theme: ' + themeToLoad);
-			planet.loadTheme();
-			nebula.loadTheme();
-			overlay.loadTheme();
-			if (!universe.context.cosmos.is(':visible')) { setTimeout(universe.letThereBelight, 1000); }
-		});
-	},
-	
 	letThereBelight: function() {
 		universe.log('And then there was light');
 		universe.context.cosmos.fadeTo(3000, 1);
@@ -112,8 +82,7 @@ var universe = {
 		universe.log('Universe: parallax');
 		
 		var throttle = 0;
-		var	offsetXprev = offsetYprev = 0;
-		var Xprev = Yprev = 50;
+		var prevX = prevY = 50;
 		var maxParallaxX = maxParallaxY = 110;
 		
 		var resize = function(event) {
@@ -134,21 +103,11 @@ var universe = {
 			update();
 		};
 		
-		var update = function(xAxis, yAxis) {
-			if (xAxis === undefined || yAxis === undefined) { xAxis = Xprev; yAxis = Yprev; }// offsetXprev = offsetYprev = 0;}
-			var offsetX = parseInt(((maxParallaxX / 100) * xAxis) - (maxParallaxX / 2), 10);
-			var offsetY = parseInt(((maxParallaxY / 100) * yAxis) - (maxParallaxY / 2), 10);
-			//if (offsetX == offsetXprev && offsetY == offsetYprev) { return false; }
-			
-			//offsetXprev = offsetX;
-			//offsetYprev = offsetY;
-			Xprev = xAxis;
-			Yprev = yAxis;
-			
-			// debug
-			//universe.debug('offsetX: ' + offsetX + '<br />offsetY: ' + offsetY);
-			//universe.debug('xAxis: ' + xAxis + '<br />yAxis: ' + yAxis);
-			//universe.debug(planetScale);
+		var update = function(axisX, axisY) {
+			if (axisX === undefined || axisY === undefined) { axisX = prevX; axisY = prevY; }
+			var offsetX = parseInt(((maxParallaxX / 100) * axisX) - (maxParallaxX / 2), 10);
+			var offsetY = parseInt(((maxParallaxY / 100) * axisY) - (maxParallaxY / 2), 10);
+			prevX = axisX; prevY = axisY;
 			
 			// parallax effect
 			universe.transform({
@@ -188,33 +147,33 @@ var universe = {
 			
 			// Animate to finger position on touchstart
 			document.getElementById('cosmos').ontouchstart = function(event) {
-				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
-				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+				var _axisX = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+				var _axisY = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
 				
 				// Animate to finger position on touchstart
 				var from = {
-					xAxis: Xprev,
-					yAxis: Yprev
+					axisX: prevX,
+					axisY: prevY
 				};
 				var to = {
-					xAxis: _xAxis,
-					yAxis: _yAxis
+					axisX: _axisX,
+					axisY: _axisY
 				};
 				$(from).animate(to, {
 					duration: 150,
 					queue: true,
 					easing: 'linear',
 					step: function() {
-						update(this.xAxis, this.yAxis);
+						update(this.axisX, this.axisY);
 					}
 				});
 			};
 			
 			// Follow finger position on touchmove
 			document.getElementById('cosmos').ontouchmove = function(event) {
-				var _xAxis = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
-				var _yAxis = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
-				update(_xAxis, _yAxis);
+				var _axisX = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
+				var _axisY = ((event.touches[0].pageY - universe.context.cosmos.height()) / (universe.context.overlay.height() - universe.context.cosmos.height())) * 100;
+				update(_axisX, _axisY);
 				
 				event.preventDefault();
 				return false;
@@ -223,19 +182,19 @@ var universe = {
 			// Center on touchend
 			document.getElementById('cosmos').ontouchend = function(event) {
 				var from = {
-					xAxis: Xprev,
-					yAxis: Yprev
+					axisX: prevX,
+					axisY: prevY
 				};
 				var to = {
-					xAxis: 50,
-					yAxis: 50
+					axisX: 50,
+					axisY: 50
 				};
 				$(from).animate(to, {
 					duration: 500,
 					easing: 'easeOutBack',
 					queue: false,
 					step: function() {
-						update(this.xAxis, this.yAxis);
+						update(this.axisX, this.axisY);
 					}
 				});
 				event.preventDefault();
@@ -266,14 +225,98 @@ var universe = {
 			};
 		} else {
 			$(document).on('mousemove', function(event) {
-				var _xAxis = (event.pageX / universe.constant.viewportWidth) * 100;
-				var _yAxis = (event.pageY / universe.constant.viewportHeight) * 100;
-				update(_xAxis, _yAxis);
+				var _axisX = (event.pageX / universe.constant.viewportWidth) * 100;
+				var _axisY = (event.pageY / universe.constant.viewportHeight) * 100;
+				update(_axisX, _axisY);
 			});
 		}
 		
 		// Set stage for the first time
 		resize();
+	},
+	
+	loadTheme: function(themeToLoad) {
+		if (universe.constant.iphone || universe.constant.android) { return; }
+		
+		if (typeof theme !== 'undefined') {
+			if (themeToLoad == theme.name) { return; }
+		} else {
+			// Select theme by the current time
+			var time = new Date();
+			$('a', universe.context.themeSelector).each(function(){
+				var _startTime = $(this).data('start-time').split(':');
+				var _compare = new Date();
+				_compare.setHours(_startTime[0]);
+				_compare.setMinutes(_startTime[1]);
+				if (time > _compare) {
+					themeToLoad = $(this).attr('class');
+				}
+			});
+			nebula.init();
+			planet.init();
+		}
+		
+		$.getScript('/min/?f=javascript/' + themeToLoad + '.js&' + new Date().getTime(), function() {
+			universe.context.body.data('theme', themeToLoad);
+			universe.log('Loaded theme: ' + themeToLoad);
+			universe.preloadSprites();
+			planet.loadTheme();
+			nebula.loadTheme();
+			overlay.loadTheme();
+			universe.createSprites();
+			if (!universe.context.cosmos.is(':visible')) { setTimeout(universe.letThereBelight, 1000); }
+		});
+	},
+	
+	preloadSprites: function() {
+		var sources = [];
+		var o = 0;
+		for (var i in theme.animations) {
+			if (universe.inArray(theme.animations[i].url, sources) === true) { continue; }
+			sources[o] = theme.animations[i].url;
+			o++;
+		}
+		universe.log('Preloading: ' + sources);
+		
+		var images = [];
+		for (i = 0; i < sources.length; i++) {
+			images[i] = new Image();
+			images[i].src = sources[i];
+		}
+	},
+	
+	createSprites: function() {
+		// generate sprite placeholders
+		$('div.sprite').remove();
+		for (var _context in theme.sprites) {
+			for (var _id in theme.sprites[_context]) {
+				$('#' + _context).append('<div id="' + _id + '" class="sprite"></div>');
+			}
+		}
+		if (universe.constant.debug) {
+			$('div.sprite').css({ border: '1px solid orange' });
+		}
+		
+		// attach sprite animator
+		$('div.sprite').each(function(){
+			$(this).data('function', function(_id, _iteration){
+				var _sprite = $('div#' + _id);
+				var _context = _sprite.parent().attr('id');
+				if (_iteration > theme.sprites[_context][_id].length - 1) { _iteration = 0; }
+				var _animation = theme.sprites[_context][_id][_iteration];
+				if (_animation.match(/trigger:/)) {
+					var _trigger = _animation.split(':');
+					universe.log('Trigger ' + _trigger[1] + ':' + _trigger[2]);
+					$('div#' + _trigger[1]).triggerHandler(_trigger[2]);
+					_sprite.data('function')(_id, _iteration+1);
+				} else {
+					var _animationObject = theme.animations[_animation];
+					_sprite.spriteAnimator(_animationObject).on('stop', function(){
+						_sprite.data('function')(_id, _iteration+1);
+					});
+				}
+			}).data('function')(this.id, 0);
+		});
 	},
 	
 	transform: function (css, context) {
