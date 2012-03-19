@@ -1,7 +1,7 @@
 
 var universe = {
 	constant: {
-		debug: true,
+		debug: false,
 		answer: 42,
 		viewportWidth: 0,
 		viewportHeight: 0,
@@ -355,9 +355,9 @@ var universe = {
 		if (universe.constant.ios || universe.constant.android) { return; }
 		universe.log('Universe: registering keystrokes');
 		
-		var konamiKeys = [];
-		konamiCode = "38,38,40,40,37,39,37,39,66,65";
-		konamiCode = "38,38,40,40";
+		//var konamiKeys = [];
+		//konamiCode = "38,38,40,40,37,39,37,39,66,65";
+		//konamiCode = "38,38,40,40";
 		
 		$(document).keyup(function(event) {
 			switch(event.keyCode) {
@@ -372,14 +372,14 @@ var universe = {
 				break;
 				
 				default: // konami
-					konamiKeys.push( event.keyCode );
+					/*konamiKeys.push( event.keyCode );
 					while (konamiKeys.length > konamiCode.split(',').length) {
 						konamiKeys.shift();
 					}
 					if ( konamiKeys.toString().indexOf( konamiCode ) >= 0 ){
 						universe.loadTheme('theme-konami');
 					}
-					universe.log('Key pressed: ' + event.keyCode);
+					universe.log('Key pressed: ' + event.keyCode);*/
 				break;
 			}
 		});
