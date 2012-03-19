@@ -8,13 +8,15 @@ var planet = {
 		universe.log('Init: planet');
 		
 		planet.spaceDebris();
+		planet.spriteEyes();
 	},
 	
 	loadTheme: function() {
 	},
 	
 	spriteEyes: function() {
-		$('#spriteEyes1', universe.context.planet).spriteAnimator({
+		universe.context.planet.append('<div id="sprite-eyes1"></div>');
+		$('#sprite-eyes1', universe.context.planet).spriteAnimator({
 			url: '/images/anim/filinl_oogjes1.png',
 			run: 0,
 			delay: 200,
@@ -35,7 +37,8 @@ var planet = {
 				{frame: 5}
 			]
 		});
-		$('#spriteEyes2', universe.context.planet).spriteAnimator({
+		universe.context.planet.append('<div id="sprite-eyes2"></div>');
+		$('#sprite-eyes2', universe.context.planet).spriteAnimator({
 			url: '/images/anim/filinl_oogjes2.png',
 			run: 0,
 			delay: 200,

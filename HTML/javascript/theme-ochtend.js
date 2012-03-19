@@ -11,13 +11,13 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				'fili-koffie',
 				'trigger:spriteSignal:stop', 'fili-typen', 'fili-typen',
 				'trigger:spriteSignal:stop', 'fili-gebeld', 'trigger:spriteSignal:stop',
 				'fili-typen', 'fili-typen', 'trigger:spriteSignal:stop'
 			],
-			'spriteSignal': ['empty', 'signal-normaal']
+			'sprite-signal': ['empty', 'signal-normaal']
 		}
 	},
 	

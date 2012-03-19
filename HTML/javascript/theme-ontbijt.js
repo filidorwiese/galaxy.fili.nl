@@ -11,7 +11,7 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				'fili-typen', 'trigger:spriteSignal:stop',
 				'fili-laptop-wegdoen',
 				'fili-eten-pakken',
@@ -22,7 +22,7 @@ var theme = {
 				'fili-laptop-pakken',
 				'trigger:spriteSignal:stop'
 			],
-			'spriteSignal': ['signal-normaal', 'empty']
+			'sprite-signal': ['signal-normaal', 'empty']
 		}
 	},
 	

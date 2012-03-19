@@ -11,14 +11,14 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd',
 				'fili-omdraai-reversed', 'fili-slaap-idee', 'fili-laptop-pakken',
 				'trigger:spriteSignal:stop', 'fili-typen', 'trigger:spriteSignal:stop',
 				'fili-laptop-wegdoen', 'fili-omdraai', 'fili-lopen-rechts',
 				'fili-slaap-idee-klaar'
 			],
-			'spriteSignal': ['empty', 'signal-normaal']
+			'sprite-signal': ['empty', 'signal-normaal']
 		}
 	},
 	

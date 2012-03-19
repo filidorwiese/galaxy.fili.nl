@@ -5,14 +5,14 @@ var theme = {
 	audio: {},
 	
 	nebula: {
-		mood: ['#00FF00', '#00FFFF'],
+		mood: ['#FFFFFF', '#00FFFF'],
 		diameter: 75
 	},
 	
 	sprites: {
-		planet: {
-			'spriteFili': [
-				 'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd', 'fili-omdraai-reversed'
+		cosmos: {
+			'sprite-konami': [
+				 'fili-slaap'
 			]
 		}
 	},
@@ -34,43 +34,10 @@ var theme = {
 			cols: 8,
 			rows: 4,
 			delay: 100,
-			bottom: 378,
-			left: 190,
-			cutOffFrames: 1
-		},
-		
-		'fili-slaap-omdraai': {
-			url: '/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
-			run: 1,
-			cols: 4,
-			rows: 2,
-			delay: 100,
-			bottom: 378,
-			left: 190,
-			cutOffFrames: 1
-		},
-		
-		'fili-slaap-omgekeerd': {
-			url: '/images/anim/nacht/pxlfili_slaap-omgekeerd_S.png',
-			run: 1, // loopbaar
-			cols: 8,
-			rows: 4,
-			delay: 100,
-			bottom: 378,
-			left: 190,
-			cutOffFrames: 1
-		},
-		
-		'fili-omdraai-reversed': {
-			url: '/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
-			run: 1,
-			cols: 4,
-			rows: 2,
-			delay: 100,
-			bottom: 378,
-			left: 190,
-			reverse: true,
+			top: 0,
+			left: 'center',
 			cutOffFrames: 1
 		}
+		
 	},
 };

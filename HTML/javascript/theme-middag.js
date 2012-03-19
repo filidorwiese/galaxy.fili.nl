@@ -11,19 +11,15 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				'fili-typen', 'fili-ossybot', 'trigger:spriteOssy:stop',
 				'fili-typen', 'fili-typen', 'trigger:spriteSignal:stop',
 				'fili-energy', 'trigger:spriteSignal:stop', 'fili-typen-snel', 'trigger:spriteSignal:stop',
 				'fili-typen', 'fili-typen', 'trigger:spriteSignal:stop',
 				'fili-gebeld', 'trigger:spriteSignal:stop', 'fili-typen'
 			],
-			'spriteOssy': ['empty', 'ossybot-los', 'ossybot-los-zweef'],
-			'spriteSignal': ['signal-normaal', 'empty', 'signal-snel', 'signal-normaal', 'empty', 'signal-normaal']
-		},
-		
-		overlay: {
-			'spriteOssy2': ['fili-typen']
+			'sprite-ossy': ['empty', 'ossybot-los', 'ossybot-los-zweef'],
+			'sprite-signal': ['signal-normaal', 'empty', 'signal-snel', 'signal-normaal', 'empty', 'signal-normaal']
 		}
 	},
 	

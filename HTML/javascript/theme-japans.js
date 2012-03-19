@@ -11,7 +11,7 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				'fili-bellen',
 				'fili-japans-eten'
 			]

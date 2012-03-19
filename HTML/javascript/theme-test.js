@@ -11,7 +11,7 @@ var theme = {
 	
 	sprites: {
 		planet: {
-			'spriteFili': [
+			'sprite-fili': [
 				 'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd', 'fili-omdraai-reversed',
 			]
 		}
