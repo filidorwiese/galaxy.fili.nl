@@ -14,7 +14,7 @@ var theme = {
 			'sprite-fili': [
 				'fili-slaap', 'fili-slaap-omdraai', 'fili-slaap-omgekeerd',
 				'fili-omdraai-reversed', 'fili-slaap-idee', 'fili-laptop-pakken',
-				'trigger:spriteSignal:stop', 'fili-typen', 'trigger:spriteSignal:stop',
+				'trigger:sprite-signal:stop', 'fili-typen', 'trigger:sprite-signal:stop',
 				'fili-laptop-wegdoen', 'fili-omdraai', 'fili-lopen-rechts',
 				'fili-slaap-idee-klaar'
 			],

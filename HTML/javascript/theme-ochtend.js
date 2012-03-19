@@ -13,9 +13,9 @@ var theme = {
 		planet: {
 			'sprite-fili': [
 				'fili-koffie',
-				'trigger:spriteSignal:stop', 'fili-typen', 'fili-typen',
-				'trigger:spriteSignal:stop', 'fili-gebeld', 'trigger:spriteSignal:stop',
-				'fili-typen', 'fili-typen', 'trigger:spriteSignal:stop'
+				'trigger:sprite-signal:stop', 'fili-typen', 'fili-typen',
+				'trigger:sprite-signal:stop', 'fili-gebeld', 'trigger:sprite-signal:stop',
+				'fili-typen', 'fili-typen', 'trigger:sprite-signal:stop'
 			],
 			'sprite-signal': ['empty', 'signal-normaal']
 		}

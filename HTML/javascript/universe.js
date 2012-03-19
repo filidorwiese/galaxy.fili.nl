@@ -1,7 +1,7 @@
 
 var universe = {
 	constant: {
-		debug: false,
+		debug: true,
 		answer: 42,
 		viewportWidth: 0,
 		viewportHeight: 0,
