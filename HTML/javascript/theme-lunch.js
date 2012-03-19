@@ -18,8 +18,8 @@ var theme = {
 				'fili-eten-klaar',
 				'fili-knipper',
 				'fili-laptop-pakken',
-				'trigger:spriteSignal:stop',
-				'fili-typen', 'trigger:spriteSignal:stop',
+				'trigger:sprite-signal:stop',
+				'fili-typen', 'trigger:sprite-signal:stop',
 				'fili-laptop-wegdoen'
 			],
 			'sprite-signal': ['empty', 'signal-normaal']

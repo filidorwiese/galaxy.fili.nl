@@ -372,7 +372,7 @@ var universe = {
 				break;
 				/*
 				default: // konami
-					/*konamiKeys.push( event.keyCode );
+					konamiKeys.push( event.keyCode );
 					while (konamiKeys.length > konamiCode.split(',').length) {
 						konamiKeys.shift();
 					}
