@@ -1,7 +1,7 @@
 
 var universe = {
 	constant: {
-		debug: true,
+		debug: false,
 		answer: 42,
 		viewportWidth: 0,
 		viewportHeight: 0,
@@ -278,7 +278,8 @@ var universe = {
 		}
 		universe.log('Preloading: ' + sources);
 		
-		var images = [];
+		// Make it global to prevent garbage collection
+		images = [];
 		for (i = 0; i < sources.length; i++) {
 			images[i] = new Image();
 			images[i].src = sources[i];
@@ -299,23 +300,21 @@ var universe = {
 		
 		// attach sprite animator
 		$('div.sprite').each(function(){
-			$(this).data('function', function(_id, _iteration){
-				var _sprite = $('div#' + _id);
-				var _context = _sprite.parent().attr('id');
-				if (_iteration > theme.sprites[_context][_id].length - 1) { _iteration = 0; }
-				var _animation = theme.sprites[_context][_id][_iteration];
-				if (_animation.match(/trigger:/)) {
+			$(this).data('function', function(_sprite, _spriteScript, _iteration){
+				if (_iteration > _spriteScript.length - 1) { _iteration = 0; }
+				var _animation = _spriteScript[_iteration];
+				if (_animation.substr(0, 8) === 'trigger:') {
 					var _trigger = _animation.split(':');
 					universe.log('Trigger ' + _trigger[1] + ':' + _trigger[2]);
 					$('div#' + _trigger[1]).triggerHandler(_trigger[2]);
-					_sprite.data('function')(_id, _iteration+1);
+					_sprite.data('function')(_sprite, _spriteScript, _iteration+1);
 				} else {
 					var _animationObject = theme.animations[_animation];
-					_sprite.spriteAnimator(_animationObject).on('stop', function(){
-						_sprite.data('function')(_id, _iteration+1);
+					_sprite.spriteAnimator(_animationObject, function(){
+						_sprite.data('function')(_sprite, _spriteScript, _iteration+1);
 					});
 				}
-			}).data('function')(this.id, 0);
+			}).data('function')($(this), theme.sprites[$(this).parent().attr('id')][$(this).attr('id')], 0);
 		});
 	},
 	
@@ -416,7 +415,7 @@ var universe = {
 		if (start === true) {
 			universe.constant.stopwatch[name] = _timer;
 		} else {
-			universe.log('Stopwatch: ' + name + ' took ' + (_timer - universe.constant.stopwatch[name]));
+			universe.log('Stopwatch: ' + name + ' took ' + (_timer - universe.constant.stopwatch[name]) + ' ms');
 			universe.constant.stopwatch[name] = _timer;
 		}
 	}

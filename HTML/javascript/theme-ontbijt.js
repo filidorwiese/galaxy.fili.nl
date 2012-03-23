@@ -199,7 +199,7 @@ var theme = {
 			cols: 2,
 			rows: 1,
 			delay: 100,
-			left: 134,
+			left: 126,
 			bottom: 378,
 			script: [
 				{frame: 2, delay: 1000}, // knipper
