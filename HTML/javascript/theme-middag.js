@@ -106,10 +106,10 @@ var theme = {
 			bottom: 378,
 			outOfSightDie: true,
 			script: [
-				{frame: 4, left: 20},
-				{frame: 1, left: 20},
-				{frame: 2, left: 20},
-				{frame: 3, left: 20}
+				{frame: 4, left: 15},
+				{frame: 1, left: 15},
+				{frame: 2, left: 15},
+				{frame: 3, left: 15}
 			]
 		},
 		///////////
