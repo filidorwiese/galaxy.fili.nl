@@ -29,7 +29,7 @@ var theme = {
 	animations: {
 		'signal-normaal': {
 			url: '/images/anim/signal.png',
-			run: 0,
+			run: -1,
 			delay: 50,
 			cols: 13,
 			rows: 1,
@@ -53,7 +53,7 @@ var theme = {
 		},
 		'empty': {
 			url: '/images/anim/empty.png',
-			run: 0,
+			run: -1,
 			cols: 1,
 			rows: 1
 		}, ///////////

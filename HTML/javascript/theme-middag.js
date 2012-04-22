@@ -29,7 +29,7 @@ var theme = {
 	animations: {
 		'signal-normaal': {
 			url: '/images/anim/signal.png',
-			run: 0,
+			run: -1,
 			delay: 50,
 			cols: 13,
 			rows: 1,
@@ -53,7 +53,7 @@ var theme = {
 		},
 		'signal-snel': {
 			url: '/images/anim/signal.png',
-			run: 0,
+			run: -1,
 			delay: 30,
 			cols: 13,
 			rows: 1,
@@ -77,7 +77,7 @@ var theme = {
 		},
 		'empty': {
 			url: '/images/anim/empty.png',
-			run: 0,
+			run: -1,
 			cols: 1,
 			rows: 1
 		},
@@ -98,13 +98,13 @@ var theme = {
 		},
 		'ossybot-los-zweef': {
 			url: '/images/anim/middag/pxlfili_ossybot-loszweef_S.png',
-			run: 0,
+			run: -1,
 			cols: 4,
 			rows: 1,
 			delay: 120,
 			left: 306,
 			bottom: 378,
-			outOfSightDie: true,
+			outOfViewStop: true,
 			script: [
 				{frame: 4, left: 15},
 				{frame: 1, left: 15},

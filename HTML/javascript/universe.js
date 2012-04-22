@@ -307,11 +307,17 @@ var universe = {
 					var _trigger = _animation.split(':');
 					universe.log('Trigger ' + _trigger[1] + ':' + _trigger[2]);
 					$('div#' + _trigger[1]).triggerHandler(_trigger[2]);
-					_sprite.data('function')(_sprite, _spriteScript, _iteration+1);
+                    var _function = _sprite.data('function');
+                    if (typeof _function != 'undefined') {
+                        _function(_sprite, _spriteScript, _iteration+1);
+                    }
 				} else {
 					var _animationObject = theme.animations[_animation];
 					_sprite.spriteAnimator(_animationObject, function(){
-						_sprite.data('function')(_sprite, _spriteScript, _iteration+1);
+                        var _function = _sprite.data('function');
+                        if (typeof _function != 'undefined') {
+                            _function(_sprite, _spriteScript, _iteration+1);
+                        }
 					});
 				}
 			}).data('function')($(this), theme.sprites[$(this).parent().attr('id')][$(this).attr('id')], 0);
