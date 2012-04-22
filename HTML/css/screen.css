@@ -284,42 +284,42 @@ div#theme-selector a.selected {
 	height:12px;
 }
 
-div#theme-selector a.theme-nacht {
+div#theme-selector a[data-theme=theme-nacht] {
 	background-color:#85a6a6;
 	width:33%;
 }
 
-div#theme-selector a.theme-ontbijt {
+div#theme-selector a[data-theme=theme-ontbijt] {
 	background-color:#FFFFFF;
 	width:5%;
 }
 
-div#theme-selector a.theme-ochtend {
+div#theme-selector a[data-theme=theme-ochtend] {
 	background-color:#ff6f00;
 	width:10%;
 }
 
-div#theme-selector a.theme-lunch {
+div#theme-selector a[data-theme=theme-lunch] {
 	background-color:#fff200;
 	width:5%;
 }
 
-div#theme-selector a.theme-middag {
+div#theme-selector a[data-theme=theme-middag] {
 	background-color:#00FF00;
 	width:20%;
 }
 
-div#theme-selector a.theme-japans {
+div#theme-selector a[data-theme=theme-japans] {
 	background-color:#db6bdb;
 	width:6%;
 }
 
-div#theme-selector a.theme-lezen {
+div#theme-selector a[data-theme=theme-lezen] {
 	background-color:#ff00cc;
 	width:10%;
 }
 
-div#theme-selector a.theme-arcade {
+div#theme-selector a[data-theme=theme-arcade] {
 	background-color:#00ffff;
 	width:8%;
 }

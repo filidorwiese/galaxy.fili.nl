@@ -56,14 +56,14 @@ var overlay = {
 	
 	loadTheme: function() {
 		$('a', universe.context.themeSelector).removeClass('selected');
-		$('a.' + universe.context.body.data('theme'), universe.context.themeSelector).addClass('selected');
+		$('a[data-theme=' + universe.context.body.data('theme') + ']', universe.context.themeSelector).addClass('selected');
 	},
 	
 	themeSwitcher: function() {
 		if (universe.constant.iphone || universe.constant.android) { return; }
 		
 		$('a', universe.context.themeSelector).on('click', function(){
-			universe.loadTheme($(this).attr('class'));
+			universe.loadTheme($(this).data('theme'));
 			window.clearInterval(overlay.constant.clock);
 			overlay.constant.clock = false;
 			return false;

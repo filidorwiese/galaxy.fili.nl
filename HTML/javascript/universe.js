@@ -249,7 +249,7 @@ var universe = {
 				_compare.setHours(_startTime[0]);
 				_compare.setMinutes(_startTime[1]);
 				if (time > _compare) {
-					themeToLoad = $(this).attr('class');
+					themeToLoad = $(this).data('theme');
 				}
 			});
 			nebula.init();
