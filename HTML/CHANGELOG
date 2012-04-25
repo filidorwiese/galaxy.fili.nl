@@ -1,3 +1,6 @@
+* april 2012 *
+- spriteAnimator verbeteringen (scriptable controls toegevoegd en code geoptimaliseerd)
+- theme selector maakt nu gebruik van data-theme
 
 * maart 2012 *
 - ie7 / ie8 ondersteuning verbeterd
