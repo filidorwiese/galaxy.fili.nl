@@ -142,17 +142,17 @@ var overlay = {
 	},
 	
 	googleBadge: function() {
-		if (universe.constant.ios) {
+		/*if (universe.constant.ios) {
 			// No flash on Ios
 			$('a#google-badge', universe.context.overlay).css({
 				textDecoration: 'line-through'
 			}).on('click', function(){ return false; });
-		} else {
-			$('a#google-badge', universe.context.overlay).on('click', function(){
+		} else {*/
+			/*$('a#google-badge', universe.context.overlay).on('click', function(){
 				var googleBadgeUrl = 'http://www.google.com/talk/service/badge/Start?tk=z01q6amlqov2a23bb7uknq1c78e9cnkvqdclsevou1kdkuto0sm4rrarpde4u7po9ddht0557eoo7n2t0fk5e5mi4cnf3hoe7vm34270maob44kar1jsg08vb0nj71b0u45frpqn1rhcvtj3fuhjv0imkra2vdufm5hafquol';
 				window.open(googleBadgeUrl, 'chatsession', 'left=200,top=200,height=350,width=300,fullscreen=0,dependent=1,resizable=1,scrollbars=0,status=0,titlebar=0,toolbar=0', false);
 				return false;
-			});
+			});*/
 			
 			var updateStatus = function() {
 				$.ajax({
@@ -161,13 +161,13 @@ var overlay = {
 					cache: false,
 					dataType: 'json',
 					success: function(status) {
-						$('a#google-badge', universe.context.overlay).removeClass().addClass(status);
+						$('span#google-badge', universe.context.overlay).removeClass().addClass('is-' + status).html(status);
 						setTimeout(updateStatus, 10000);
 					}
 				});
 			};
 			updateStatus();
-		}
+		//}
 	},
 	
 	relExternal: function() {

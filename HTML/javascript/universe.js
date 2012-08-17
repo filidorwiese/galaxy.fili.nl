@@ -25,7 +25,6 @@ var universe = {
 		if (universe.constant.useTransforms) {
 			var thisBody = document.body || document.documentElement;
 			var thisStyle = thisBody.style;
-			//universe.constant.transformSupport = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined;
             universe.constant.transformSupport = thisStyle.transform !== undefined || thisStyle.WebkitTransform !== undefined || thisStyle.MozTransform !== undefined || thisStyle.OTransform !== undefined;
 			if (universe.constant.transformSupport) { universe.log('Detected CSS3 transformation support'); }
 			if (universe.constant.ipad) { universe.constant.useTranslate3d = true; }
@@ -345,12 +344,9 @@ var universe = {
 			}
 			
 			if (transform.length) {
-				var vendorPrefixes = ['', '-webkit-', '-moz-', '-o-'];
-				for (var i = vendorPrefixes.length - 1; i >= 0; i--) {
-					css[vendorPrefixes[i] + 'transform'] = transform.join(' ');
-					css[vendorPrefixes[i] + 'transform-origin'] = '50% 50%';
-					css[vendorPrefixes[i] + 'transform-duration'] = '0';
-				}
+                css['transform'] = transform.join(' ');
+                css['transform-origin'] = '50% 50%';
+                css['transform-duration'] = '0';
 			}
 			
 		}

@@ -150,21 +150,22 @@ header ul#personal-information li a {
 	text-decoration:underline;
 }
 
-header ul#personal-information li a#google-badge {
+header ul#personal-information li #google-badge {
 	padding-left:15px;
 	background-repeat:no-repeat;
 	background-position:center left;
+    text-transform:capitalize;
 }
 
-header ul#personal-information li a#google-badge.is-online {
+header ul#personal-information li #google-badge.is-online {
 	background-image:url(/images/online.png);
 }
 
-header ul#personal-information li a#google-badge.is-idle {
+header ul#personal-information li #google-badge.is-idle {
 	background-image:url(/images/idle.png);
 }
 
-header ul#personal-information li a#google-badge.is-busy {
+header ul#personal-information li #google-badge.is-busy {
 	background-image:url(/images/busy.png);
 }
 
