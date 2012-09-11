@@ -114,7 +114,7 @@ section#content {
 }
 
 header {
-	padding:20px 40px 38px 40px;
+	padding:20px 40px 80px 40px;
 	color:#a5b2bd;
 	font-size:80%;
 }
@@ -233,18 +233,65 @@ article a:hover {
 	background-color:#eaeaea;
 }
 
-article ul#social-media {
-	margin-top:20px;
+ul#social-media {
+	margin-top:30px;
 }
 
-article ul#social-media li {
+ul#social-media li {
 	float:left;
 	margin-right:5px;
 }
 
-article ul#social-media li:last-child {
+ul#social-media li:last-child {
 	margin-left:4px;
 }
+
+ul#language-selector {
+    position:absolute;
+    top:122px;
+    right:40px;
+    z-index:95;
+}
+
+ul#language-selector li {
+    float:left;
+}
+
+ul#language-selector a {
+    display:inline-block;
+    width:28px;
+    height:20px;
+    background-image:url(../images/language.png);
+}
+
+html.nl .nl {
+    display:block;
+}
+html.nl .en {
+    display:none;
+}
+html.en .nl {
+    display:none;
+}
+html.en .en {
+    display:block;
+}
+
+html.nl ul#language-selector a[data-language=nl] {
+    background-position:left top;
+    cursor:default;
+}
+html.nl ul#language-selector a[data-language=en] {
+    background-position:right top;
+}
+html.en ul#language-selector a[data-language=nl] {
+    background-position:left bottom;
+}
+html.en ul#language-selector a[data-language=en] {
+    background-position:right bottom;
+    cursor:default;
+}
+
 
 div#theme-selector {
 	display:none;

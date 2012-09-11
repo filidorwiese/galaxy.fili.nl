@@ -43,6 +43,7 @@ var universe = {
 			body: $('#universe'),
 			content: $('#content'),
 			overlay: $('#overlay'),
+			languageSelector: $('#language-selector'),
 			themeSelector: $('#theme-selector'),
 			cosmos: $('#cosmos'),
 			nebula: $('#nebula'),

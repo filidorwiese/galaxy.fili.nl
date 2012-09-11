@@ -22,6 +22,9 @@ article {
 	margin-top:0;
 	display:block !important;
 }
+div#overlay {
+	top:0;
+    }
 
 section#content {
 	left:0;

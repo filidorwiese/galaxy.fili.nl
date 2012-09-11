@@ -6,7 +6,7 @@
 		min-width:0 !important;
 	}
 	
-	section#cosmos, header #unfold, div#speech {
+	section#cosmos, header #unfold, div#speech, div#theme-selector {
 		display:none !important;
 	}
 	
@@ -14,7 +14,7 @@
 		left:0;
 		margin-left:0;
 		width:100% !important;
-		min-height:1100px !important;
+		min-height:750px !important;
 	}
 	
 	#awwwards {
@@ -28,11 +28,19 @@
 		width:100%;
 	}
 	
+    section#content {
+        min-height:1100px !important;
+    }
+
 	header ul#personal-information {
 		float:left !important;
 		margin-top:20px;
 	}
-	
+
+    ul#language-selector {
+        top:172px;
+    }
+    
 	article {
 		top:100px !important;
 		clear:both;
@@ -42,6 +50,12 @@
 		float:none;
 		margin-bottom:10px;
 	}
+}
+
+@media screen and (max-width: 460px) {
+    ul#language-selector {
+        top:26px;
+    }
 }
 
 
@@ -56,4 +70,8 @@
 	header ul#personal-information li {
 		min-width:120px;
 	}
+
+    ul#language-selector {
+        right:20px;
+    }
 }

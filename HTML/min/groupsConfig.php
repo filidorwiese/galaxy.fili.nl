@@ -36,6 +36,7 @@ return array(
 		'//javascript/commentblock.js',
 		'//javascript/jquery.easing.1.3.js',
 		'//javascript/jquery.ba-hashchange.js',
+		'//javascript/jquery.cookie.js',
 		'//javascript/colorpicker.js',
 		'//javascript/jquery.sprite-animator.js',
 		'//javascript/nebula.js',
