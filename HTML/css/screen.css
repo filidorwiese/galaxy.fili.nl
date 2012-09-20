@@ -233,6 +233,22 @@ article a:hover {
 	background-color:#eaeaea;
 }
 
+article a.disabled {
+    text-decoration:line-through;
+    color:#a5b2bd !important;
+    background:#FFF !important;
+}
+
+article figure {
+    float:right;
+    padding:0;
+    margin:0 0 0 20px;
+}
+
+article div.en {
+    min-height:284px;
+}
+
 ul#social-media {
 	margin-top:30px;
 }
@@ -261,7 +277,7 @@ ul#language-selector a {
     display:inline-block;
     width:28px;
     height:20px;
-    background-image:url(../images/language.png);
+    background-image:url(/images/language.png);
 }
 
 html.nl .nl {
@@ -291,7 +307,6 @@ html.en ul#language-selector a[data-language=en] {
     background-position:right bottom;
     cursor:default;
 }
-
 
 div#theme-selector {
 	display:none;
