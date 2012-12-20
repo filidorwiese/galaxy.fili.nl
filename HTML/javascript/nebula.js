@@ -10,7 +10,7 @@ var nebula = {
 	},
 	
 	init: function() {
-		if (universe.constant.iphone || universe.constant.android) { return; }
+		if (universe.constant.smallScreen) { return; }
 		
 		universe.log('Init: nebula');
 		nebula.generateStars(nebula.constant.starCount);

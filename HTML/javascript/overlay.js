@@ -61,7 +61,7 @@ var overlay = {
 	},
 	
 	themeSwitcher: function() {
-		if (universe.constant.iphone || universe.constant.android) { return; }
+		if (universe.constant.smallScreen) { return; }
 		
 		$('a', universe.context.themeSelector).on('click', function(){
 			universe.loadTheme($(this).data('theme'));

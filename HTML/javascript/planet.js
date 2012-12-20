@@ -3,7 +3,7 @@ var planet = {
 	constant: {},
 	
 	init: function() {
-		if (universe.constant.iphone || universe.constant.android) { return false; }
+		if (universe.constant.smallScreen) { return false; }
 		
 		universe.log('Init: planet');
 		
