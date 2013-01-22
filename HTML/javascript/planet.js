@@ -18,12 +18,13 @@ var planet = {
 		universe.context.planet.append('<div id="sprite-eyes1"></div>');
 		$('#sprite-eyes1', universe.context.planet).spriteAnimator({
 			url: '/images/anim/filinl_oogjes1.png',
-			run: -1,
-			delay: 200,
 			cols: 5,
 			rows: 1,
 			bottom:10,
-			left:37,
+			left:37
+		}).play({
+			run: -1,
+			delay: 200,
 			script: [
 				{frame: 1, delay: 2000},
 				{frame: 2},
@@ -36,16 +37,17 @@ var planet = {
 				{frame: 1, delay: 3000},
 				{frame: 5}
 			]
-		});
+        });
 		universe.context.planet.append('<div id="sprite-eyes2"></div>');
 		$('#sprite-eyes2', universe.context.planet).spriteAnimator({
 			url: '/images/anim/filinl_oogjes2.png',
-			run: -1,
-			delay: 200,
 			cols: 6,
 			rows: 1,
 			bottom:88,
-			right:25,
+			right:25
+		}).play({
+			run: -1,
+			delay: 200,
 			script: [
 				{frame: 1, delay: 2000},
 				{frame: 4},
@@ -60,7 +62,7 @@ var planet = {
 				{frame: 1, delay: 2000},
 				{frame: 2, delay: 2000}
 			]
-		});
+        });
 	},
 	
 	spaceDebris: function() {
@@ -70,24 +72,27 @@ var planet = {
 		universe.context.spaceDebris.append('<div class="one"></div><div class="two"></div><div class="three">');
 		$('.one', universe.context.spaceDebris).spriteAnimator({
 			url: '/images/anim/debris2d_a_S_alpha50.png',
-			run: -1,
-			delay: 150,
 			cols: 16,
 			rows: 1
-		});
+		}).play({
+            run: -1,
+			delay: 150
+        });
 		$('.two', universe.context.spaceDebris).spriteAnimator({
 			url: '/images/anim/debris2d_b_S_alpha50.png',
-			run: -1,
-			delay: 150,
 			cols: 8,
 			rows: 2
-		});
+		}).play({
+            run: -1,
+			delay: 150
+        });
 		$('.three', universe.context.spaceDebris).spriteAnimator({
 			url: '/images/anim/debris2d_c_S_alpha50.png',
-			run: -1,
-			delay: 150,
 			cols: 5,
 			rows: 2
-		});
+		}).play({
+            run: -1,
+			delay: 150
+        });
 	}
 };

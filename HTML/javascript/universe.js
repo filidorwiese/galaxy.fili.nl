@@ -314,11 +314,24 @@ var universe = {
                     }
                 } else {
                     var _animationObject = theme.animations[_animation];
-                    _sprite.spriteAnimator(_animationObject, function(){
+                    _sprite.spriteAnimator({
+                        url: _animationObject.url,
+                        cols: _animationObject.cols,
+                        rows: _animationObject.rows,
+                        bottom: _animationObject.bottom,
+                        left: _animationObject.left,
+                        top: _animationObject.top,
+                        right: _animationObject.right,
+                        cutOffFrames: _animationObject.cutOffFrames
+                    }, function(){
                         var _function = _sprite.data('function');
                         if (typeof _function != 'undefined') {
                             _function(_sprite, _spriteScript, _iteration+1);
                         }
+                    }).play({
+                        run: _animationObject.run,
+                        delay: _animationObject.delay,
+                        script: _animationObject.script
                     });
                 }
             }).data('function')($(this), theme.sprites[$(this).parent().attr('id')][$(this).attr('id')], 0);
