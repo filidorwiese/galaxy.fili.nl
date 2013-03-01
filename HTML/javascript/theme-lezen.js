@@ -35,14 +35,14 @@ var theme = {
 			bottom: 378,
 			left: 170,
 			script: [
-				{frame: 5}, // bladzijde omslaan
-				{frame: 6},
-				{frame: 7},
-				{frame: 8},
-				{frame: 9},
-				{frame: 10},
-				{frame: 11},
-				{frame: 12}
+				{sprite: 5}, // bladzijde omslaan
+				{sprite: 6},
+				{sprite: 7},
+				{sprite: 8},
+				{sprite: 9},
+				{sprite: 10},
+				{sprite: 11},
+				{sprite: 12}
 			]
 		},
 		
@@ -55,24 +55,24 @@ var theme = {
 			bottom: 378,
 			left: 170,
 			script: [
-				{frame: 1}, // regels lezen
-				{frame: 2, delay: 800},
-				{frame: 1},
-				{frame: 3, delay: 400},
+				{sprite: 1}, // regels lezen
+				{sprite: 2, delay: 800},
+				{sprite: 1},
+				{sprite: 3, delay: 400},
 				
-				{frame: 1}, // regels lezen
-				{frame: 2, delay: 800},
-				{frame: 1},
-				{frame: 3, delay: 400},
+				{sprite: 1}, // regels lezen
+				{sprite: 2, delay: 800},
+				{sprite: 1},
+				{sprite: 3, delay: 400},
 				
-				{frame: 1}, // regels lezen
-				{frame: 2, delay: 400},
-				{frame: 1},
-				{frame: 3, delay: 800},
+				{sprite: 1}, // regels lezen
+				{sprite: 2, delay: 400},
+				{sprite: 1},
+				{sprite: 3, delay: 800},
 				
-				{frame: 1}, // ogen knipperen
-				{frame: 4},
-				{frame: 1}
+				{sprite: 1}, // ogen knipperen
+				{sprite: 4},
+				{sprite: 1}
 			]
 		}
 	}

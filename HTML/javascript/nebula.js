@@ -2,7 +2,7 @@
 var nebula = {
 	constant: {
 		starCount: 15,
-		lastframe: 0,
+		lastsprite: 0,
 		paletteIterator: null,
 		colorPicker: false,
 		colorOne: null,

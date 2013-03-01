@@ -20,7 +20,7 @@ var theme = {
 	animations: {
 		'empty': {
 			url: '/images/anim/empty.png',
-			run: -1,
+			run: 0,
 			cols: 1,
 			rows: 1,
 			bottom: 394,

@@ -313,8 +313,10 @@ var universe = {
                         _function(_sprite, _spriteScript, _iteration+1);
                     }
                 } else {
+                    //var debug = (_sprite.attr('id') == 'sprite-ossy' ? true : false);
                     var _animationObject = theme.animations[_animation];
                     _sprite.spriteAnimator({
+                        debug: false,
                         url: _animationObject.url,
                         cols: _animationObject.cols,
                         rows: _animationObject.rows,
@@ -326,11 +328,12 @@ var universe = {
                     }).play({
                         run: _animationObject.run,
                         delay: _animationObject.delay,
-                        script: _animationObject.script
-                    }, function(){
-                        var _function = _sprite.data('function');
-                        if (typeof _function != 'undefined') {
-                            _function(_sprite, _spriteScript, _iteration+1);
+                        script: _animationObject.script,
+                        onStop: function(){
+                            var _function = _sprite.data('function');
+                            if (typeof _function != 'undefined') {
+                                _function(_sprite, _spriteScript, _iteration+1);
+                            }
                         }
                     });
                 }

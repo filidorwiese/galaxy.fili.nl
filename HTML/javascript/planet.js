@@ -26,16 +26,16 @@ var planet = {
 			run: -1,
 			delay: 200,
 			script: [
-				{frame: 1, delay: 2000},
-				{frame: 2},
-				{frame: 1, delay: 4000},
-				{frame: 4},
-				{frame: 1, delay: 300},
-				{frame: 4, delay: 100},
-				{frame: 1, delay: 3000},
-				{frame: 3},
-				{frame: 1, delay: 3000},
-				{frame: 5}
+				{sprite: 1, delay: 2000},
+				{sprite: 2},
+				{sprite: 1, delay: 4000},
+				{sprite: 4},
+				{sprite: 1, delay: 300},
+				{sprite: 4, delay: 100},
+				{sprite: 1, delay: 3000},
+				{sprite: 3},
+				{sprite: 1, delay: 3000},
+				{sprite: 5}
 			]
         });
 		universe.context.planet.append('<div id="sprite-eyes2"></div>');
@@ -49,18 +49,18 @@ var planet = {
 			run: -1,
 			delay: 200,
 			script: [
-				{frame: 1, delay: 2000},
-				{frame: 4},
-				{frame: 1, delay: 300},
-				{frame: 4, delay: 100},
-				{frame: 1, delay: 2000},
-				{frame: 6},
-				{frame: 1, delay: 2000},
-				{frame: 3},
-				{frame: 1, delay: 2000},
-				{frame: 5},
-				{frame: 1, delay: 2000},
-				{frame: 2, delay: 2000}
+				{sprite: 1, delay: 2000},
+				{sprite: 4},
+				{sprite: 1, delay: 300},
+				{sprite: 4, delay: 100},
+				{sprite: 1, delay: 2000},
+				{sprite: 6},
+				{sprite: 1, delay: 2000},
+				{sprite: 3},
+				{sprite: 1, delay: 2000},
+				{sprite: 5},
+				{sprite: 1, delay: 2000},
+				{sprite: 2, delay: 2000}
 			]
         });
 	},
