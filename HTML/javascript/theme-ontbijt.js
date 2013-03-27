@@ -218,6 +218,7 @@ var theme = {
 			delay: 100,
 			left: 114,
 			bottom: 378,
+            startSprite: 27,
 			reversed: true
 		}
 	}

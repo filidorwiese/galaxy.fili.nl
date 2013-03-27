@@ -324,11 +324,13 @@ var universe = {
                         left: _animationObject.left,
                         top: _animationObject.top,
                         right: _animationObject.right,
-                        cutOffFrames: _animationObject.cutOffFrames
+                        cutOffFrames: _animationObject.cutOffFrames,
+                        startSprite: _animationObject.startSprite
                     }).play({
                         run: _animationObject.run,
                         delay: _animationObject.delay,
                         script: _animationObject.script,
+                        reversed: _animationObject.reversed,
                         onStop: function(){
                             var _function = _sprite.data('function');
                             if (typeof _function != 'undefined') {

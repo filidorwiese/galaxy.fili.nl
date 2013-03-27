@@ -96,8 +96,9 @@ var theme = {
 			delay: 100,
 			bottom: 378,
 			left: 190,
-			reversed: true,
-			cutOffFrames: 1
+            startSprite: 7,
+			cutOffFrames: 1,
+			reversed: true
 		},
 		
 		'fili-slaap-idee': {
@@ -155,7 +156,7 @@ var theme = {
 			delay: 100,
 			left: 122,
 			bottom: 378,
-			cutOffFrames: 3,
+            startSprite: 27,
 			reversed: true
 		},
 		
