@@ -162,13 +162,13 @@ var overlay = {
         var updateStatus = function() {
             $.ajax({
                 type: 'GET',
-                url: '/google-status.php',
+                url: '/google-status.json?' + new Date().getTime(),
                 cache: false,
                 dataType: 'json',
                 success: function(state) {
                     var _html = '<span class="nl">' + state.nl + '</span><span class="en">' + state.en + '</span>';
                     $('#google-badge', universe.context.overlay).removeClass().addClass('is-' + state.state).html(_html);
-                    setTimeout(updateStatus, 10000);
+                    setTimeout(updateStatus, 60000);
                 }
             });
         };

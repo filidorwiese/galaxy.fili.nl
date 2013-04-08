@@ -157,18 +157,22 @@ header ul#personal-information li #google-badge {
     text-transform:capitalize;
 }
 
+header ul#personal-information li #google-badge.is-available,
 header ul#personal-information li #google-badge.is-online {
 	background-image:url(/images/online.png);
 }
 
+header ul#personal-information li #google-badge.is-away,
 header ul#personal-information li #google-badge.is-idle {
 	background-image:url(/images/idle.png);
 }
 
+header ul#personal-information li #google-badge.is-dnd,
 header ul#personal-information li #google-badge.is-busy {
 	background-image:url(/images/busy.png);
 }
 
+header ul#personal-information li #google-badge.is-unavailable,
 header ul#personal-information li #google-badge.is-offline {
 	background-image:url(/images/offline.png);
 	text-decoration:line-through;

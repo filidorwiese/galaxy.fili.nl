@@ -18,10 +18,10 @@ long_line_column=72
 
 [files]
 current_page=3
-FILE_NAME_0=2137;HTML;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/index.html;0;4
-FILE_NAME_1=501;Javascript;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/javascript/planet.js;0;4
-FILE_NAME_2=13166;Javascript;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/javascript/universe.js;0;4
-FILE_NAME_3=90;Javascript;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/javascript/theme-middag.js;0;4
+FILE_NAME_0=1185;PHP;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/google-status-xmp.php;0;4
+FILE_NAME_1=4832;Javascript;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/javascript/overlay.js;0;4
+FILE_NAME_2=2999;CSS;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/css/screen.css;0;4
+FILE_NAME_3=1142;HTML;0;16;0;1;0;/home/fili/Project/fili.nl/galaxy.fili.nl/HTML/index.html;0;4
 
 [VTE]
 last_dir=/home/fili/Project/fili.nl/galaxy.fili.nl
