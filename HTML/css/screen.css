@@ -162,6 +162,7 @@ header ul#personal-information li #google-badge.is-online {
 	background-image:url(/images/online.png);
 }
 
+header ul#personal-information li #google-badge.is-xa,
 header ul#personal-information li #google-badge.is-away,
 header ul#personal-information li #google-badge.is-idle {
 	background-image:url(/images/idle.png);
