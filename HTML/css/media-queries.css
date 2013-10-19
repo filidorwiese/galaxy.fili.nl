@@ -23,38 +23,46 @@
 }
 
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 630px) {
 	header hgroup {
-		width:100%;
+            width:100%;
 	}
 	
-    section#content {
-        min-height:1100px !important;
-    }
+        section#content {
+            min-height:1100px !important;
+        }
 
+	header hgroup {
+             float:none;
+        }
 	header ul#personal-information {
-		float:left !important;
+		float:none;
 		margin-top:20px;
 	}
 
-    ul#language-selector {
-        top:172px;
-    }
+        ul#language-selector {
+            top:26px;
+        }
     
 	article {
-		top:100px !important;
+		top:110px !important;
 		clear:both;
 	}
 	
 	article ul#social-media li {
 		float:none;
 		margin-bottom:10px;
+		margin-left:0 !important;
 	}
 }
 
 @media screen and (max-width: 460px) {
-    ul#language-selector {
-        top:26px;
+    article {
+	text-align:left;
+    }
+
+    article div {
+	min-height:0;
     }
 }
 

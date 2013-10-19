@@ -148,6 +148,34 @@ var universe = {
             maxParallaxX = maxParallaxX * 5;
             maxParallaxY = maxParallaxY * 5;
             
+            // Scale on iPad pinch gesture
+		/*
+            //document.getElementById('cosmos')
+            $('#cosmos').on('gesturechange', function(event) {
+                event.preventDefault();
+	        planetScale = event.scale;
+        	update();
+                
+                //$(document).on('gesturechange', function(event) {
+		//});
+
+                $(this).on('gestureend', function(event) {
+                    var from = { scale: planetScale };
+                    var to = { scale: 1 };
+                    $(from).animate(to, {
+                        duration: 500,
+                        easing: 'easeOutBack',
+                        queue: false,
+                        step: function(step) {
+                            planetScale = step;
+                            update();
+                        }
+                    });
+                });
+                
+                return false;
+            });*/
+
             // Animate to finger position on touchstart
             document.getElementById('cosmos').ontouchstart = function(event) {
                 var _axisX = ((event.touches[0].pageX - universe.constant.viewportWidth) / (0 - universe.constant.viewportWidth)) * 100;
@@ -203,29 +231,7 @@ var universe = {
                 event.preventDefault();
                 return false;
             };
-            
-            // Scale on iPad pinch gesture
-            document.getElementById('cosmos').ongesturechange = function(event) {
-                planetScale = event.scale;
-                update();
-                
-                this.ongestureend = function(event) {
-                    var from = { scale: planetScale };
-                    var to = { scale: 1 };
-                    $(from).animate(to, {
-                        duration: 500,
-                        easing: 'easeOutBack',
-                        queue: false,
-                        step: function(step) {
-                            planetScale = step;
-                            update();
-                        }
-                    });
-                };
-                
-                event.preventDefault();
-                return false;
-            };
+
         } else {
             $(document).on('mousemove', function(event) {
                 var _axisX = (event.pageX / universe.constant.viewportWidth) * 100;
