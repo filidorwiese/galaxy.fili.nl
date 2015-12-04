@@ -10,14 +10,15 @@
  * @package Minify
  * @author Stephen Clay <steve@mrclay.org>
  */
-class Minify_HTML_Helper {
+class Minify_HTML_Helper
+{
     public $rewriteWorks = true;
     public $minAppUri = '/min';
     public $groupsConfigFile = '';
 
     /*
      * Get an HTML-escaped Minify URI for a group or set of files
-     * 
+     *
      * @param mixed $keyOrFiles a group key or array of filepaths/URIs
      * @param array $opts options:
      *   'farExpires' : (default true) append a modified timestamp for cache revving
@@ -32,11 +33,11 @@ class Minify_HTML_Helper {
     {
         $opts = array_merge(array( // default options
             'farExpires' => true
-            ,'debug' => false
-            ,'charset' => 'UTF-8'
-            ,'minAppUri' => '/min'
-            ,'rewriteWorks' => true
-            ,'groupsConfigFile' => ''
+        , 'debug' => false
+        , 'charset' => 'UTF-8'
+        , 'minAppUri' => '/min'
+        , 'rewriteWorks' => true
+        , 'groupsConfigFile' => ''
         ), $opts);
         $h = new self;
         $h->minAppUri = $opts['minAppUri'];
@@ -57,7 +58,7 @@ class Minify_HTML_Helper {
     public function getRawUri($farExpires = true, $debug = false)
     {
         $path = rtrim($this->minAppUri, '/') . '/';
-        if (! $this->rewriteWorks) {
+        if (!$this->rewriteWorks) {
             $path .= '?';
         }
         if (null === $this->_groupKey) {
@@ -85,7 +86,8 @@ class Minify_HTML_Helper {
             if (0 === strpos($file, '//')) {
                 $file = substr($file, 2);
             } elseif (0 === strpos($file, '/')
-                      || 1 === strpos($file, ':\\')) {
+                || 1 === strpos($file, ':\\')
+            ) {
                 $file = substr($file, strlen($_SERVER['DOCUMENT_ROOT']) + 1);
             }
             $file = strtr($file, '\\', '/');
@@ -98,7 +100,7 @@ class Minify_HTML_Helper {
     {
         $this->_groupKey = $key;
         if ($checkLastModified) {
-            if (! $this->groupsConfigFile) {
+            if (!$this->groupsConfigFile) {
                 $this->groupsConfigFile = dirname(dirname(dirname(dirname(__FILE__)))) . '/groupsConfig.php';
             }
             if (is_file($this->groupsConfigFile)) {
@@ -109,7 +111,7 @@ class Minify_HTML_Helper {
             }
         }
     }
-    
+
     public static function getLastModified($sources, $lastModified = 0)
     {
         $max = $lastModified;
@@ -132,7 +134,7 @@ class Minify_HTML_Helper {
     protected $_filePaths = array();
     protected $_lastModified = null;
 
-    
+
     /**
      * In a given array of strings, find the character they all have at
      * a particular index
@@ -141,7 +143,8 @@ class Minify_HTML_Helper {
      * @param int $pos index to check
      * @return mixed a common char or '' if any do not match
      */
-    protected static function _getCommonCharAtPos($arr, $pos) {
+    protected static function _getCommonCharAtPos($arr, $pos)
+    {
         $l = count($arr);
         $c = $arr[0][$pos];
         if ($c === '' || $l === 1)
@@ -158,7 +161,8 @@ class Minify_HTML_Helper {
      * @param array $paths root-relative URIs of files
      * @param string $minRoot root-relative URI of the "min" application
      */
-    protected static function _getShortestUri($paths, $minRoot = '/min/') {
+    protected static function _getShortestUri($paths, $minRoot = '/min/')
+    {
         $pos = 0;
         $base = '';
         $c;
@@ -173,7 +177,7 @@ class Minify_HTML_Helper {
         }
         $base = preg_replace('@[^/]+$@', '', $base);
         $uri = $minRoot . 'f=' . implode(',', $paths);
-        
+
         if (substr($base, -1) === '/') {
             // we have a base dir!
             $basedPaths = $paths;

@@ -4,7 +4,7 @@
  * @package Minify
  */
 
-/** 
+/**
  * You may wish to use the Minify URI Builder app to suggest
  * changes. http://yourdomain/min/builder/
  **/
@@ -33,22 +33,22 @@ return array(
     ),//*/
 
     'core-js' => array(
-		'//javascript/commentblock.js',
-		'//javascript/jquery.easing.1.3.js',
-		'//javascript/jquery.ba-hashchange.js',
-		'//javascript/jquery.cookie.js',
-		'//javascript/colorpicker.js',
-		'//javascript/jquery.sprite-animator.js',
-		'//javascript/nebula.js',
-		'//javascript/planet.js',
-		'//javascript/overlay.js',
-		'//javascript/universe.js'
-	),
+        '//javascript/commentblock.js',
+        '//javascript/jquery.easing.1.3.js',
+        '//javascript/jquery.ba-hashchange.js',
+        '//javascript/jquery.cookie.js',
+        '//javascript/colorpicker.js',
+        '//javascript/jquery.sprite-animator.js',
+        '//javascript/nebula.js',
+        '//javascript/planet.js',
+        '//javascript/overlay.js',
+        '//javascript/universe.js'
+    ),
     'core-css' => array(
-		'//css/reset.css',
-		'//css/colorpicker.css',
-		'//css/screen.css',
-		'//css/media-queries.css',
-		'//css/keyframe-animations.css'
-	),
+        '//css/reset.css',
+        '//css/colorpicker.css',
+        '//css/screen.css',
+        '//css/media-queries.css',
+        '//css/keyframe-animations.css'
+    ),
 );

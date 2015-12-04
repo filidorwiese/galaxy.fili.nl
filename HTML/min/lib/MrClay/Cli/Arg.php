@@ -41,7 +41,8 @@ namespace MrClay\Cli;
  * @author Steve Clay <steve@mrclay.org>
  * @license http://www.opensource.org/licenses/mit-license.php  MIT License
  */
-class Arg {
+class Arg
+{
     /**
      * @return array
      */
@@ -80,7 +81,7 @@ class Arg {
     public function __construct($isRequired = false)
     {
         $this->spec = $this->getDefaultSpec();
-        $this->required = (bool) $isRequired;
+        $this->required = (bool)$isRequired;
         if ($isRequired) {
             $this->spec['mustHaveValue'] = true;
         }

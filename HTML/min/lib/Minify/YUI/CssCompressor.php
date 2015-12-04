@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Minify_YUI_CssCompressor 
+ * Class Minify_YUI_CssCompressor
  * @package Minify
  *
  * YUI Compressor
@@ -15,12 +15,13 @@
 
 /**
  * Compress CSS (incomplete DO NOT USE)
- * 
+ *
  * @see https://github.com/yui/yuicompressor/blob/master/src/com/yahoo/platform/yui/compressor/CssCompressor.java
  *
  * @package Minify
  */
-class Minify_YUI_CssCompressor {
+class Minify_YUI_CssCompressor
+{
 
     /**
      * Minify a CSS string
@@ -160,9 +161,10 @@ class Minify_YUI_CssCompressor {
     protected function _shortenHexCB($m)
     {
         // Test for AABBCC pattern
-        if ((strtolower($m[3])===strtolower($m[4])) &&
-                (strtolower($m[5])===strtolower($m[6])) &&
-                (strtolower($m[7])===strtolower($m[8]))) {
+        if ((strtolower($m[3]) === strtolower($m[4])) &&
+            (strtolower($m[5]) === strtolower($m[6])) &&
+            (strtolower($m[7]) === strtolower($m[8]))
+        ) {
             return $m[1] . $m[2] . "#" . $m[3] . $m[5] . $m[7];
         } else {
             return $m[0];

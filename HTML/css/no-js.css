@@ -6,32 +6,33 @@ article #social-media,
 article a.back,
 #theme-selector,
 #awwwards {
-	display:none !important;
+    display: none !important;
 }
 
 body {
-	overflow:visible !important;
-	height:auto;
+    overflow: visible !important;
+    height: auto;
 }
 
 article {
-	clear:both;
-	position:relative !important;
-	top:20px !important;
-	height:auto;
-	margin-top:0;
-	display:block !important;
+    clear: both;
+    position: relative !important;
+    top: 20px !important;
+    height: auto;
+    margin-top: 0;
+    display: block !important;
 }
+
 div#overlay {
-	top:0;
-    }
+    top: 0;
+}
 
 section#content {
-	left:0;
-	margin-left:0;
-	width:100% !important;
-	min-height:1000px !important;
-	height:auto;
+    left: 0;
+    margin-left: 0;
+    width: 100% !important;
+    min-height: 1000px !important;
+    height: auto;
 }
 
 

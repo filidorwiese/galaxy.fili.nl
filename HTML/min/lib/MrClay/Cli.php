@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MrClay;
 
@@ -15,16 +15,17 @@ namespace MrClay;
  * @author Steve Clay <steve@mrclay.org>
  * @license http://www.opensource.org/licenses/mit-license.php  MIT License
  */
-class Cli {
-    
+class Cli
+{
+
     /**
      * @var array validation errors
      */
     public $errors = array();
-    
+
     /**
      * @var array option values available after validation.
-     * 
+     *
      * E.g. array(
      *      'a' => false              // option was missing
      *     ,'b' => true               // option was present
@@ -64,17 +65,18 @@ class Cli {
      * @var resource
      */
     protected $_stdout = null;
-    
+
     /**
      * @param bool $exitIfNoStdin (default true) Exit() if STDIN is not defined
      */
     public function __construct($exitIfNoStdin = true)
     {
-        if ($exitIfNoStdin && ! defined('STDIN')) {
+        if ($exitIfNoStdin && !defined('STDIN')) {
             exit('This script is for command-line use only.');
         }
         if (isset($GLOBALS['argv'][1])
-             && ($GLOBALS['argv'][1] === '-?' || $GLOBALS['argv'][1] === '--help')) {
+            && ($GLOBALS['argv'][1] === '-?' || $GLOBALS['argv'][1] === '--help')
+        ) {
             $this->isHelpRequest = true;
         }
     }
@@ -106,10 +108,10 @@ class Cli {
      */
     public function addArgument($letter, $required, Cli\Arg $arg = null)
     {
-        if (! preg_match('/^[a-zA-Z]$/', $letter)) {
+        if (!preg_match('/^[a-zA-Z]$/', $letter)) {
             throw new \InvalidArgumentException('$letter must be in [a-zA-z]');
         }
-        if (! $arg) {
+        if (!$arg) {
             $arg = new Cli\Arg($required);
         }
         $this->_args[$letter] = $arg;
@@ -127,7 +129,7 @@ class Cli {
 
     /*
      * Read and validate options
-     * 
+     *
      * @return bool true if all options are valid
      */
     public function validate()
@@ -136,17 +138,17 @@ class Cli {
         $this->errors = array();
         $this->values = array();
         $this->_stdin = null;
-        
+
         if ($this->isHelpRequest) {
             return false;
         }
-        
+
         $lettersUsed = '';
         foreach ($this->_args as $letter => $arg) {
-            /* @var Cli\Arg $arg  */
+            /* @var Cli\Arg $arg */
             $options .= $letter;
             $lettersUsed .= $letter;
-            
+
             if ($arg->mayHaveValue || $arg->mustHaveValue) {
                 $options .= ($arg->mustHaveValue ? ':' : '::');
             }
@@ -159,7 +161,7 @@ class Cli {
         $this->debug['getopt_return'] = $o;
 
         foreach ($this->_args as $letter => $arg) {
-            /* @var Cli\Arg $arg  */
+            /* @var Cli\Arg $arg */
             $this->values[$letter] = false;
             if (isset($o[$letter])) {
                 if (is_bool($o[$letter])) {
@@ -191,21 +193,21 @@ class Cli {
                             break;
                         }
                     }
-                    if (! $foundInArgv) {
+                    if (!$foundInArgv) {
                         // space separated
                         $k = array_search("-$letter", $argvCopy);
                         if ($k !== false) {
                             array_splice($argvCopy, $k, 2);
                         }
                     }
-                    
+
                     // check that value isn't really another option
                     if (strlen($lettersUsed) > 1) {
                         $pattern = "/^-[" . str_replace($letter, '', $lettersUsed) . "]/i";
                         if (preg_match($pattern, $v)) {
                             $this->addError($letter, "Value was read as another option: %s", $v);
                             return false;
-                        }    
+                        }
                     }
                     if ($arg->assertFile || $arg->assertDir) {
                         if ($v[0] !== '/' && $v[0] !== '~') {
@@ -219,22 +221,22 @@ class Cli {
                         } elseif ($arg->useAsOutfile) {
                             $this->_stdout = $v;
                         }
-                        if ($arg->assertReadable && ! is_readable($v)) {
+                        if ($arg->assertReadable && !is_readable($v)) {
                             $this->addError($letter, "File not readable: %s", $v);
                             continue;
                         }
                         if ($arg->assertWritable) {
                             if (is_file($v)) {
-                                if (! is_writable($v)) {
+                                if (!is_writable($v)) {
                                     $this->addError($letter, "File not writable: %s", $v);
                                 }
                             } else {
-                                if (! is_writable(dirname($v))) {
+                                if (!is_writable(dirname($v))) {
                                     $this->addError($letter, "Directory not writable: %s", dirname($v));
                                 }
                             }
                         }
-                    } elseif ($arg->assertDir && $arg->assertWritable && ! is_writable($v)) {
+                    } elseif ($arg->assertDir && $arg->assertWritable && !is_writable($v)) {
                         $this->addError($letter, "Directory not readable: %s", $v);
                     }
                 }
@@ -269,10 +271,10 @@ class Cli {
         }
         return $r;
     }
-    
+
     /**
      * Get a short list of errors with options
-     * 
+     *
      * @return string
      */
     public function getErrorReport()
@@ -295,7 +297,7 @@ class Cli {
     {
         $r = "\n";
         foreach ($this->_args as $letter => $arg) {
-            /* @var Cli\Arg $arg  */
+            /* @var Cli\Arg $arg */
             $desc = $arg->getDescription();
             $flag = " -$letter ";
             if ($arg->mayHaveValue) {
@@ -317,7 +319,7 @@ class Cli {
         }
         return $r;
     }
-    
+
     /**
      * Get resource of open input stream. May be STDIN or a file pointer
      * to the file specified by an option with 'STDIN'.
@@ -333,14 +335,14 @@ class Cli {
             return $this->_stdin;
         }
     }
-    
+
     public function closeInput()
     {
         if (null !== $this->_stdin) {
             fclose($this->_stdin);
         }
     }
-    
+
     /**
      * Get resource of open output stream. May be STDOUT or a file pointer
      * to the file specified by an option with 'STDOUT'. The file will be
@@ -357,7 +359,7 @@ class Cli {
             return $this->_stdout;
         }
     }
-    
+
     public function closeOutput()
     {
         if (null !== $this->_stdout) {

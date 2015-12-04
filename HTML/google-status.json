@@ -1,1 +1,5 @@
-{"state":"available","nl":"Online","en":"Online"}
+{
+  "state": "available",
+  "nl": "Online",
+  "en": "Online"
+}

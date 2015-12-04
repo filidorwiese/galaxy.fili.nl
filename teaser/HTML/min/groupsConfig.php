@@ -4,7 +4,7 @@
  * @package Minify
  */
 
-/** 
+/**
  * You may wish to use the Minify URI Builder app to suggest
  * changes. http://yourdomain/min/builder/
  **/
@@ -32,8 +32,8 @@ return array(
         ))
     ),//*/
     'core-js' => array(
-		'//javascript/commentblock.js',
-		'//javascript/jquery.sprite-animator.js',
-		'//javascript/teaser.js'),
+        '//javascript/commentblock.js',
+        '//javascript/jquery.sprite-animator.js',
+        '//javascript/teaser.js'),
     'core-css' => array('//css/reset.css', '//css/screen.css'),
 );

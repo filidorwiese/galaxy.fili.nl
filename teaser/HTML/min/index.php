@@ -1,9 +1,9 @@
 <?php
 /**
  * Front controller for default Minify implementation
- * 
+ *
  * DO NOT EDIT! Configure this utility via config.php and groupsConfig.php
- * 
+ *
  * @package Minify
  */
 
@@ -20,7 +20,7 @@ require 'Minify.php';
 Minify::$uploaderHoursBehind = $min_uploaderHoursBehind;
 Minify::setCache(
     isset($min_cachePath) ? $min_cachePath : ''
-    ,$min_cacheFileLocking
+    , $min_cacheFileLocking
 );
 
 if ($min_documentRoot) {
@@ -54,9 +54,9 @@ if (isset($_GET['g'])) {
     $min_serveOptions['minApp']['groups'] = (require MINIFY_MIN_DIR . '/groupsConfig.php');
 }
 if (isset($_GET['f']) || isset($_GET['g'])) {
-    // serve!   
+    // serve!
     Minify::serve('MinApp', $min_serveOptions);
-        
+
 } elseif ($min_enableBuilder) {
     header('Location: builder/');
     exit();
