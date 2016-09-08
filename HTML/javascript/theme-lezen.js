@@ -19,14 +19,14 @@ var theme = {
 
     animations: {
         'empty': {
-            url: '/images/anim/empty.png',
+            url: '//cdn.fili.nl/images/anim/empty.png',
             run: -1,
             cols: 1,
             rows: 1
         }, ///////////
 
         'fili-boek-bladeren': {
-            url: '/images/anim/lezen/pxlfili_lezen_S.png',
+            url: '//cdn.fili.nl/images/anim/lezen/pxlfili_lezen_S.png',
             run: 1, // loopbaar
             cols: 5,
             rows: 3,
@@ -46,7 +46,7 @@ var theme = {
         },
 
         'fili-boek-lezen': {
-            url: '/images/anim/lezen/pxlfili_lezen_S.png',
+            url: '//cdn.fili.nl/images/anim/lezen/pxlfili_lezen_S.png',
             run: 1, // loopbaar
             cols: 5,
             rows: 3,

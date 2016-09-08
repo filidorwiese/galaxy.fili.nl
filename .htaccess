@@ -1,5 +1,9 @@
 Options -Indexes +FollowSymLinks
 
+<FilesMatch ".(eot|ttf|otf|woff)">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
 AddDefaultCharset utf-8
 AddType text/x-component .htc
 

@@ -9,7 +9,7 @@ var teaser = {
 
     spriteFiliArthur: function () {
         $('#teaser div').spriteAnimator({
-            url: '/images/pxlfili_enarthurgroter.png',
+            url: '//cdn.fili.nl/images/pxlfili_enarthurgroter.png',
             run: 0,
             delay: 100,
             cols: 11,
