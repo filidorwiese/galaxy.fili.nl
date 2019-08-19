@@ -133,7 +133,7 @@ var overlay = {
         } else {
             universe.context.overlay.toggleClass('is-open');
             universe.context.overlay.animate({
-                height: 500
+                height: 440
             }, {
                 easing: 'linear',
                 duration: 200,
