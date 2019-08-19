@@ -19,14 +19,14 @@ var theme = {
 
     animations: {
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
         }, ///////////
 
         'fili-arcade-spelen': {
-            url: '//cdn.fili.nl/images/anim/arcade/pxlfili_arcade_S.png',
+            url: '//galaxy.fili.nl/images/anim/arcade/pxlfili_arcade_S.png',
             run: 3, // loopbaar
             cols: 3,
             rows: 9,
@@ -56,7 +56,7 @@ var theme = {
         },
 
         'fili-arcade-schieten': {
-            url: '//cdn.fili.nl/images/anim/arcade/pxlfili_arcade_S.png',
+            url: '//galaxy.fili.nl/images/anim/arcade/pxlfili_arcade_S.png',
             run: 1, // loopbaar
             cols: 3,
             rows: 9,

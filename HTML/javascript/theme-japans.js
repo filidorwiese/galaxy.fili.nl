@@ -19,14 +19,14 @@ var theme = {
 
     animations: {
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
         }, ///////////
 
         'fili-bellen': {
-            url: '//cdn.fili.nl/images/anim/japans/pxlfili_bellen_S.png',
+            url: '//galaxy.fili.nl/images/anim/japans/pxlfili_bellen_S.png',
             run: 1,
             cols: 15,
             rows: 3,
@@ -136,7 +136,7 @@ var theme = {
         },
 
         'fili-japans-eten': {
-            url: '//cdn.fili.nl/images/anim/japans/pxlfili_japans2_S.png',
+            url: '//galaxy.fili.nl/images/anim/japans/pxlfili_japans2_S.png',
             run: 1,
             cols: 7,
             rows: 13,

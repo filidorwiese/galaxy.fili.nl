@@ -27,7 +27,7 @@ var theme = {
 
     animations: {
         'signal-normaal': {
-            url: '//cdn.fili.nl/images/anim/signal.png',
+            url: '//galaxy.fili.nl/images/anim/signal.png',
             run: -1,
             delay: 50,
             cols: 13,
@@ -51,7 +51,7 @@ var theme = {
             ]
         },
         'signal-snel': {
-            url: '//cdn.fili.nl/images/anim/signal.png',
+            url: '//galaxy.fili.nl/images/anim/signal.png',
             run: -1,
             delay: 30,
             cols: 13,
@@ -75,13 +75,13 @@ var theme = {
             ]
         },
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
         },
         'ossybot-los': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_ossybot-los_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_ossybot-los_S.png',
             run: 1,
             cols: 4,
             rows: 1,
@@ -96,7 +96,7 @@ var theme = {
             ]
         },
         'ossybot-los-zweef': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_ossybot-loszweef_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_ossybot-loszweef_S.png',
             run: -1,
             cols: 4,
             rows: 1,
@@ -114,7 +114,7 @@ var theme = {
         ///////////
 
         'fili-typen': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_typzijkant_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_typzijkant_S.png',
             run: 15, // loopbaar
             cols: 5,
             rows: 1,
@@ -124,7 +124,7 @@ var theme = {
         },
 
         'fili-typen-snel': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_typhyper_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_typhyper_S.png',
             run: 30, // loopbaar
             cols: 5,
             rows: 1,
@@ -134,7 +134,7 @@ var theme = {
         },
 
         'fili-ossybot': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_ossybot_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_ossybot_S.png',
             run: 1,
             cols: 4,
             rows: 13,
@@ -200,7 +200,7 @@ var theme = {
         },
 
         'fili-energy': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_energy_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_energy_S.png',
             run: 1,
             cols: 5,
             rows: 13,
@@ -297,7 +297,7 @@ var theme = {
         },
 
         'fili-gebeld': {
-            url: '//cdn.fili.nl/images/anim/middag/pxlfili_gebeld_S.png',
+            url: '//galaxy.fili.nl/images/anim/middag/pxlfili_gebeld_S.png',
             run: 1,
             cols: 6,
             rows: 13,

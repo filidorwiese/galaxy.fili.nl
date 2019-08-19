@@ -18,7 +18,7 @@ var planet = {
     spriteEyes: function () {
         universe.context.planet.append('<div id="sprite-eyes1"></div>');
         $('#sprite-eyes1', universe.context.planet).spriteAnimator({
-            url: '//cdn.fili.nl/images/anim/filinl_oogjes1.png',
+            url: '//galaxy.fili.nl/images/anim/filinl_oogjes1.png',
             cols: 5,
             rows: 1,
             bottom: 10,
@@ -41,7 +41,7 @@ var planet = {
         });
         universe.context.planet.append('<div id="sprite-eyes2"></div>');
         $('#sprite-eyes2', universe.context.planet).spriteAnimator({
-            url: '//cdn.fili.nl/images/anim/filinl_oogjes2.png',
+            url: '//galaxy.fili.nl/images/anim/filinl_oogjes2.png',
             cols: 6,
             rows: 1,
             bottom: 88,
@@ -74,7 +74,7 @@ var planet = {
         universe.log('Planet: spawning space debris');
         universe.context.spaceDebris.append('<div class="one"></div><div class="two"></div><div class="three">');
         $('.one', universe.context.spaceDebris).spriteAnimator({
-            url: '//cdn.fili.nl/images/anim/debris2d_a_S_alpha50.png',
+            url: '//galaxy.fili.nl/images/anim/debris2d_a_S_alpha50.png',
             cols: 16,
             rows: 1
         }).play({
@@ -82,7 +82,7 @@ var planet = {
             delay: 150
         });
         $('.two', universe.context.spaceDebris).spriteAnimator({
-            url: '//cdn.fili.nl/images/anim/debris2d_b_S_alpha50.png',
+            url: '//galaxy.fili.nl/images/anim/debris2d_b_S_alpha50.png',
             cols: 8,
             rows: 2
         }).play({
@@ -90,7 +90,7 @@ var planet = {
             delay: 150
         });
         $('.three', universe.context.spaceDebris).spriteAnimator({
-            url: '//cdn.fili.nl/images/anim/debris2d_c_S_alpha50.png',
+            url: '//galaxy.fili.nl/images/anim/debris2d_c_S_alpha50.png',
             cols: 5,
             rows: 2
         }).play({

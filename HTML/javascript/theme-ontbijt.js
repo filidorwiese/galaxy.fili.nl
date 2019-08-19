@@ -27,7 +27,7 @@ var theme = {
 
     animations: {
         'signal-normaal': {
-            url: '//cdn.fili.nl/images/anim/signal.png',
+            url: '//galaxy.fili.nl/images/anim/signal.png',
             run: -1,
             delay: 50,
             cols: 13,
@@ -51,14 +51,14 @@ var theme = {
             ]
         },
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
         }, ///////////
 
         'fili-typen': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_typzijkant_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_typzijkant_rev_S.png',
             run: 10, // loopbaar
             cols: 5,
             rows: 1,
@@ -68,7 +68,7 @@ var theme = {
         },
 
         'fili-laptop-wegdoen': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_laptopweg_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_laptopweg_rev_S.png',
             run: 1,
             cols: 9,
             rows: 3,
@@ -78,7 +78,7 @@ var theme = {
         },
 
         'fili-eten-pakken': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_koelkasteten_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_koelkasteten_rev_S.png',
             run: 1,
             cols: 6,
             rows: 13,
@@ -89,7 +89,7 @@ var theme = {
         },
 
         'fili-eten': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_broodje_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_broodje_rev_S.png',
             run: 3, // loopbaar
             cols: 5,
             rows: 2,
@@ -118,7 +118,7 @@ var theme = {
         },
 
         'fili-eten-knipper': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_broodje_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_broodje_rev_S.png',
             run: 1,
             cols: 5,
             rows: 2,
@@ -132,7 +132,7 @@ var theme = {
         },
 
         'fili-eten-klaar': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_broodjeopeten_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_broodjeopeten_rev_S.png',
             run: 1,
             cols: 11,
             rows: 3,
@@ -193,7 +193,7 @@ var theme = {
         },
 
         'fili-knipper': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_knipper_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_knipper_S.png',
             run: 1,
             cols: 2,
             rows: 1,
@@ -210,7 +210,7 @@ var theme = {
         },
 
         'fili-laptop-pakken': {
-            url: '//cdn.fili.nl/images/anim/ontbijt/pxlfili_laptopweg_rev_S.png',
+            url: '//galaxy.fili.nl/images/anim/ontbijt/pxlfili_laptopweg_rev_S.png',
             run: 1,
             cols: 9,
             rows: 3,

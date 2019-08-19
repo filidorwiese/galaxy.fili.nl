@@ -18,7 +18,7 @@ var theme = {
 
     animations: {
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1,
@@ -28,7 +28,7 @@ var theme = {
 
 
         'fili-slaap': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_S.png',
             run: 1, // loopbaar
             cols: 8,
             rows: 4,

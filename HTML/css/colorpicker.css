@@ -4,7 +4,7 @@
     overflow: hidden;
     position: absolute;
     z-index: 1000 !important;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_background.png);
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_background.png);
     font-family: Arial, Helvetica, sans-serif;
     display: none;
     -webkit-user-select: none;
@@ -32,7 +32,7 @@
     left: 0;
     width: 150px;
     height: 150px;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_overlay.png);
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_overlay.png);
 }
 
 .colorpicker_color div div {
@@ -42,7 +42,7 @@
     width: 11px;
     height: 11px;
     overflow: hidden;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_select.gif);
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_select.gif);
     margin: -5px 0 0 -5px;
 }
 
@@ -60,7 +60,7 @@
     width: 35px;
     height: 9px;
     overflow: hidden;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_indic.gif) left top;
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_indic.gif) left top;
     margin: -4px 0 0 0;
     left: 0px;
 }
@@ -102,7 +102,7 @@
     position: absolute;
     width: 72px;
     height: 22px;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_hex.png) top;
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_hex.png) top;
     left: 212px;
     top: 142px;
 }
@@ -129,37 +129,37 @@
 }
 
 .colorpicker_rgb_r {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_rgb_r.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_rgb_r.png);
     top: 52px;
     left: 212px;
 }
 
 .colorpicker_rgb_g {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_rgb_g.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_rgb_g.png);
     top: 82px;
     left: 212px;
 }
 
 .colorpicker_rgb_b {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_rgb_b.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_rgb_b.png);
     top: 112px;
     left: 212px;
 }
 
 .colorpicker_hsb_h {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_hsb_h.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_hsb_h.png);
     top: 52px;
     left: 282px;
 }
 
 .colorpicker_hsb_s {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_hsb_s.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_hsb_s.png);
     top: 82px;
     left: 282px;
 }
 
 .colorpicker_hsb_b {
-    background-image: url(//cdn.fili.nl/images/colorpicker/colorpicker_hsb_b.png);
+    background-image: url(//galaxy.fili.nl/images/colorpicker/colorpicker_hsb_b.png);
     top: 112px;
     left: 282px;
 }
@@ -168,7 +168,7 @@
     position: absolute;
     width: 22px;
     height: 22px;
-    background: url(//cdn.fili.nl/images/colorpicker/colorpicker_submit.png) top;
+    background: url(//galaxy.fili.nl/images/colorpicker/colorpicker_submit.png) top;
     left: 322px;
     top: 142px;
     overflow: hidden;

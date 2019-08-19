@@ -22,7 +22,7 @@ var theme = {
 
     animations: {
         'signal-normaal': {
-            url: '//cdn.fili.nl/images/anim/signal.png',
+            url: '//galaxy.fili.nl/images/anim/signal.png',
             run: -1,
             delay: 50,
             cols: 13,
@@ -46,7 +46,7 @@ var theme = {
             ]
         },
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
@@ -54,7 +54,7 @@ var theme = {
 
 
         'fili-typen': {
-            url: '//cdn.fili.nl/images/anim/ochtend/pxlfili_typzijkant_S.png',
+            url: '//galaxy.fili.nl/images/anim/ochtend/pxlfili_typzijkant_S.png',
             run: 10, // loopbaar
             cols: 5,
             rows: 1,
@@ -64,7 +64,7 @@ var theme = {
         },
 
         'fili-koffie': {
-            url: '//cdn.fili.nl/images/anim/ochtend/pxlfili_koffie_S.png',
+            url: '//galaxy.fili.nl/images/anim/ochtend/pxlfili_koffie_S.png',
             run: 1,
             cols: 4,
             rows: 21,
@@ -183,7 +183,7 @@ var theme = {
         },
 
         'fili-gebeld': {
-            url: '//cdn.fili.nl/images/anim/ochtend/pxlfili_gebeld_S.png',
+            url: '//galaxy.fili.nl/images/anim/ochtend/pxlfili_gebeld_S.png',
             run: 1,
             cols: 6,
             rows: 13,

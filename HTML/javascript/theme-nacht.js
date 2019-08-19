@@ -23,7 +23,7 @@ var theme = {
 
     animations: {
         'signal-normaal': {
-            url: '//cdn.fili.nl/images/anim/signal.png',
+            url: '//galaxy.fili.nl/images/anim/signal.png',
             run: -1,
             delay: 50,
             cols: 13,
@@ -47,7 +47,7 @@ var theme = {
             ]
         },
         'empty': {
-            url: '//cdn.fili.nl/images/anim/empty.png',
+            url: '//galaxy.fili.nl/images/anim/empty.png',
             run: 0,
             cols: 1,
             rows: 1
@@ -55,7 +55,7 @@ var theme = {
 
 
         'fili-slaap': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_S.png',
             run: 5, // loopbaar
             cols: 8,
             rows: 4,
@@ -66,7 +66,7 @@ var theme = {
         },
 
         'fili-slaap-omdraai': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
             run: 1,
             cols: 4,
             rows: 2,
@@ -77,7 +77,7 @@ var theme = {
         },
 
         'fili-slaap-omgekeerd': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap-omgekeerd_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap-omgekeerd_S.png',
             run: 3, // loopbaar
             cols: 8,
             rows: 4,
@@ -88,7 +88,7 @@ var theme = {
         },
 
         'fili-omdraai-reversed': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_omdraai_S.png',
             run: 1,
             cols: 4,
             rows: 2,
@@ -101,7 +101,7 @@ var theme = {
         },
 
         'fili-slaap-idee': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_idee_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_idee_S.png',
             run: 1,
             cols: 8,
             rows: 3,
@@ -148,7 +148,7 @@ var theme = {
         },
 
         'fili-laptop-pakken': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_laptopweg_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_laptopweg_S.png',
             run: 1,
             cols: 9,
             rows: 3,
@@ -160,7 +160,7 @@ var theme = {
         },
 
         'fili-typen': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_typzijkant_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_typzijkant_S.png',
             run: 15, // loopbaar
             cols: 5,
             rows: 1,
@@ -170,7 +170,7 @@ var theme = {
         },
 
         'fili-laptop-wegdoen': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_laptopweg_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_laptopweg_S.png',
             run: 1,
             cols: 9,
             rows: 3,
@@ -180,7 +180,7 @@ var theme = {
         },
 
         'fili-omdraai': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_idee-klaar_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_idee-klaar_S.png',
             run: 1,
             cols: 7,
             rows: 3,
@@ -194,7 +194,7 @@ var theme = {
         },
 
         'fili-lopen-rechts': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_loopR_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_loopR_S.png',
             run: 1,
             cols: 3,
             rows: 1,
@@ -213,7 +213,7 @@ var theme = {
         },
 
         'fili-slaap-idee-klaar': {
-            url: '//cdn.fili.nl/images/anim/nacht/pxlfili_slaap_idee-klaar_S.png',
+            url: '//galaxy.fili.nl/images/anim/nacht/pxlfili_slaap_idee-klaar_S.png',
             run: 1,
             cols: 7,
             rows: 3,
