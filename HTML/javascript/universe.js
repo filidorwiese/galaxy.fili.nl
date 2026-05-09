@@ -276,7 +276,7 @@ var universe = {
             planet.init();
         }
 
-        $.getScript('/min/?f=javascript/' + themeToLoad + '.js&' + new Date().getTime(), function () {
+        $.getScript('/javascript/' + themeToLoad + '.min.js?' + new Date().getTime(), function () {
             universe.context.body.data('theme', themeToLoad);
             universe.log('Loaded theme: ' + themeToLoad);
             universe.preloadSprites();
