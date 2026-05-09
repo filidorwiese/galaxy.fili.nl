@@ -1,6 +1,32 @@
 # galaxy.fili.nl
 The source for my personal website on https://galaxy.fili.nl for whoever is interested. All artwork has been created by Arthur van 't Hoog (http://www.avth.nl) and is not free for use (see license information below).
 
+## Building minified CSS/JS ##
+
+The site ships pre-minified bundles. Source files live in `HTML/css/` and `HTML/javascript/`; the build script concatenates and minifies them into:
+
+* `HTML/css/core.min.css` — referenced from `HTML/index.html`
+* `HTML/javascript/core.min.js` — referenced from `HTML/index.html`
+* `HTML/javascript/theme-*.min.js` — loaded at runtime by `universe.js` when a theme is selected
+
+Bundle membership for `core.min.css` and `core.min.js` is defined in `HTML/min/groupsConfig.php`. Theme files are picked up automatically via `theme-*.js` glob.
+
+### Prerequisites
+
+* PHP 8.x
+* [Composer](https://getcomposer.org/)
+
+### Workflow
+
+```
+composer install        # one-time, installs matthiasmullie/minify
+php build.php           # rebuilds all .min.css / .min.js
+```
+
+After editing any source CSS or JS, run `php build.php` and commit the regenerated `*.min.*` files. Bump the cache-buster query string in `HTML/index.html` (`?20160908-006` etc.) when changing `core.min.css` / `core.min.js`.
+
+The legacy runtime minifier in `HTML/min/` (mrclay/minify 2.1.5) is no longer used; it was incompatible with PHP 8.x.
+
 ## Publications ##
 
 In July of 2011 it was awarded the Site of the Day by Awwwards.com
